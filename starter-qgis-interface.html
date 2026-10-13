@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Find your way around QGIS | Temitope Akinboyewa</title>
+  <meta name="description" content="Starter guide for beginners: Find your way around QGIS. The main parts of the QGIS window, and how to move around the map.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="container nav" aria-label="Main">
+      <a class="brand" href="index.html">Temitope Akinboyewa</a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" onclick="var l=document.getElementById('nav-links');l.classList.toggle('open');this.setAttribute('aria-expanded',l.classList.contains('open'))">&#9776;</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="awards.html">Awards</a></li>
+        <li><a href="presentations.html">Presentations</a></li>
+        <li><a href="teaching.html">Teaching</a></li>
+        <li class="has-sub"><a href="learning.html">Learning</a>
+          <ul class="sub-menu">
+            <li><a href="learning-gis.html">GIS</a></li>
+            <li><a href="learning-remote-sensing.html" aria-current="page">Remote Sensing</a></li>
+            <li><a href="learning-geoai.html">GeoAI</a></li>
+          </ul>
+        </li>
+        <li><a href="links.html">Links</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-head">
+      <div class="container">
+        <div class="crumbs"><a href="learning.html">Learning</a> &rsaquo; <a href="learning-remote-sensing.html">Remote Sensing</a> &rsaquo; <a href="learning-remote-sensing.html#starter">Starter guides</a></div>
+        <div class="eyebrow">Starter guide 3 of 8</div>
+        <h1>Find your way around QGIS</h1>
+        <p>The main parts of the QGIS window, and how to move around the map.</p>
+        <div class="lesson-facts"><span><strong>Time:</strong> about 25 minutes</span><span><strong>Level:</strong> complete beginner</span></div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container lesson">
+<h2>Watch</h2>
+<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/h8sXU4kGCbU" title="Complete QGIS Interface Tutorial (2026)" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+<p class="video-credit">&ldquo;Complete QGIS Interface Tutorial (2026)&rdquo; by GeoSkill Pro. <a href="https://www.youtube.com/watch?v=h8sXU4kGCbU">Watch on YouTube</a>.</p>
+<p><strong>More videos:</strong></p>
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=DkyaEYNxEmQ">QGIS Tutorials 02: Introduction to QGIS Interface for Absolute Beginners</a> (Terra Spatial)</li>
+</ul>
+
+<h2>The main parts of the window</h2>
+<ul>
+  <li><strong>Menu bar</strong> (top): every tool in QGIS can be found here, under menus such as <span class="ui">Project</span>, <span class="ui">Layer</span>, <span class="ui">Vector</span>, and <span class="ui">Raster</span>.</li>
+  <li><strong>Toolbars</strong> (under the menus): buttons for the tools you use most, such as zoom, pan, and select.</li>
+  <li><strong>Browser panel</strong> (left): like a file explorer. Use it to find data on your computer and online sources.</li>
+  <li><strong>Layers panel</strong> (left): the list of everything on your map. Layers at the top are drawn on top. Tick the box to show or hide a layer.</li>
+  <li><strong>Map canvas</strong> (center): where your map appears.</li>
+  <li><strong>Status bar</strong> (bottom): shows the coordinates under your mouse, the map scale, and the coordinate system of the project (for example <code>EPSG:4326</code>).</li>
+  <li><strong>Processing Toolbox</strong>: a searchable list of hundreds of analysis tools. Open it with <span class="ui">Processing &rsaquo; Toolbox</span>.</li>
+</ul>
+
+<h2>Moving around the map</h2>
+<ul>
+  <li><strong>Zoom:</strong> roll the mouse wheel.</li>
+  <li><strong>Pan (move):</strong> hold down the mouse wheel and drag, or hold the <span class="ui">Space</span> bar and move the mouse.</li>
+  <li><strong>Zoom to a layer:</strong> right-click the layer in the Layers panel and choose <span class="ui">Zoom to Layer(s)</span>.</li>
+  <li><strong>See everything:</strong> click <span class="ui">View &rsaquo; Zoom Full</span>.</li>
+</ul>
+
+<h2>Try it</h2>
+<ol class="steps">
+  <li>Open QGIS and click <span class="ui">Project &rsaquo; New</span>.</li>
+  <li>In the Browser panel, open <span class="ui">XYZ Tiles</span> and double-click <span class="ui">OpenStreetMap</span>. A world map appears.</li>
+  <li>Zoom in to your town. Watch the coordinates change in the status bar as you move the mouse.</li>
+  <li>Save the project with <span class="ui">Project &rsaquo; Save As</span>. QGIS projects end in <code>.qgz</code>.</li>
+</ol>
+
+<h2>If a panel disappears</h2>
+<p>It happens to everyone. Go to <span class="ui">View &rsaquo; Panels</span> and tick the panel you want back, such as <span class="ui">Layers</span> or <span class="ui">Browser</span>. Missing toolbars are under <span class="ui">View &rsaquo; Toolbars</span>.</p>
+<div class="callout"><p><strong>Tip:</strong> a project file (<code>.qgz</code>) only remembers <em>where</em> your data are and how they look. It does not contain the data. If you move or delete your data files, the project cannot find them.</p></div>
+
+        <nav class="lesson-nav" aria-label="Guide navigation"><a href="starter-install-qgis.html">&larr; Install QGIS</a><a href="starter-files-and-folders.html">Organize your files and folders &rarr;</a></nav>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <strong>Temitope Akinboyewa</strong>
+          Department of Geography<br>
+          The Pennsylvania State University, University Park, PA<br>
+          <a href="mailto:tea5209@psu.edu">tea5209@psu.edu</a>
+        </div>
+        <div class="footer-links">
+          <a href="https://scholar.google.com/citations?user=yQsUY8MAAAAJ&hl=en">Google Scholar</a>
+          <a href="https://www.researchgate.net/profile/Temitope-Akinboyewa">ResearchGate</a>
+          <a href="https://github.com/Teakinboyewa">GitHub</a>
+          <a href="files/Akinboyewa_CV.pdf">CV</a>
+        </div>
+      </div>
+      <div class="copyright">&copy; 2026 Temitope Akinboyewa</div>
+    </div>
+  </footer>
+</body>
+</html>

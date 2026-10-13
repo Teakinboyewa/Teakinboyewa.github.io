@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Add a basemap | Temitope Akinboyewa</title>
+  <meta name="description" content="Starter guide for beginners: Add a basemap. Put a street map or satellite map under your data for reference.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="container nav" aria-label="Main">
+      <a class="brand" href="index.html">Temitope Akinboyewa</a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" onclick="var l=document.getElementById('nav-links');l.classList.toggle('open');this.setAttribute('aria-expanded',l.classList.contains('open'))">&#9776;</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="awards.html">Awards</a></li>
+        <li><a href="presentations.html">Presentations</a></li>
+        <li><a href="teaching.html">Teaching</a></li>
+        <li class="has-sub"><a href="learning.html">Learning</a>
+          <ul class="sub-menu">
+            <li><a href="learning-gis.html">GIS</a></li>
+            <li><a href="learning-remote-sensing.html" aria-current="page">Remote Sensing</a></li>
+            <li><a href="learning-geoai.html">GeoAI</a></li>
+          </ul>
+        </li>
+        <li><a href="links.html">Links</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-head">
+      <div class="container">
+        <div class="crumbs"><a href="learning.html">Learning</a> &rsaquo; <a href="learning-remote-sensing.html">Remote Sensing</a> &rsaquo; <a href="learning-remote-sensing.html#starter">Starter guides</a></div>
+        <div class="eyebrow">Starter guide 5 of 8</div>
+        <h1>Add a basemap</h1>
+        <p>Put a street map or satellite map under your data for reference.</p>
+        <div class="lesson-facts"><span><strong>Time:</strong> about 15 minutes</span><span><strong>Level:</strong> complete beginner</span></div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container lesson">
+<h2>Watch</h2>
+<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/9CSK2C5SHBo" title="Add Basemaps in Seconds with QuickMapServices (QGIS Tutorial)" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+<p class="video-credit">&ldquo;Add Basemaps in Seconds with QuickMapServices (QGIS Tutorial)&rdquo; by Alex Does GIS. <a href="https://www.youtube.com/watch?v=9CSK2C5SHBo">Watch on YouTube</a>.</p>
+<p><strong>More videos:</strong></p>
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=thTQMkRp3mI">QGIS Basemaps: the Ultimate Guide</a> (Geospatial School)</li>
+</ul>
+
+<p>A <strong>basemap</strong> is a background map, such as a street map or satellite view, that helps you see where your data are. Basemaps are for reference only: you look at them, but you do not analyze them.</p>
+
+<h2>Option 1: OpenStreetMap (built in)</h2>
+<ol class="steps">
+  <li>In the <strong>Browser</strong> panel, expand <span class="ui">XYZ Tiles</span>.</li>
+  <li>Double-click <span class="ui">OpenStreetMap</span>. It appears in the Layers panel.</li>
+  <li>Drag it to the <strong>bottom</strong> of the Layers panel so your own data are drawn on top.</li>
+</ol>
+
+<h2>Option 2: More basemaps with the QuickMapServices plugin</h2>
+<ol class="steps">
+  <li>Install the <strong>QuickMapServices</strong> plugin (see <a href="starter-plugins.html">Install a plugin</a>).</li>
+  <li>Go to <span class="ui">Web &rsaquo; QuickMapServices</span> and choose a map, for example <span class="ui">OSM &rsaquo; OSM Standard</span>.</li>
+  <li>For many more choices, including satellite imagery, open <span class="ui">Web &rsaquo; QuickMapServices &rsaquo; Settings</span>, go to the <span class="ui">More services</span> tab, and click <span class="ui">Get contributed pack</span>.</li>
+</ol>
+
+<h2>Good to know</h2>
+<ul>
+  <li>Basemaps need an internet connection. Without one, the map stays blank.</li>
+  <li>Basemaps are images streamed from the web. You cannot click on them to get pixel values or reflectance. For that, you need real satellite data, which you download in Weeks 1 and 3.</li>
+  <li>If you use a basemap in a published map, credit its source (for example, "&copy; OpenStreetMap contributors").</li>
+</ul>
+
+        <nav class="lesson-nav" aria-label="Guide navigation"><a href="starter-files-and-folders.html">&larr; Organize your files and folders</a><a href="starter-plugins.html">Install a plugin &rarr;</a></nav>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <strong>Temitope Akinboyewa</strong>
+          Department of Geography<br>
+          The Pennsylvania State University, University Park, PA<br>
+          <a href="mailto:tea5209@psu.edu">tea5209@psu.edu</a>
+        </div>
+        <div class="footer-links">
+          <a href="https://scholar.google.com/citations?user=yQsUY8MAAAAJ&hl=en">Google Scholar</a>
+          <a href="https://www.researchgate.net/profile/Temitope-Akinboyewa">ResearchGate</a>
+          <a href="https://github.com/Teakinboyewa">GitHub</a>
+          <a href="files/Akinboyewa_CV.pdf">CV</a>
+        </div>
+      </div>
+      <div class="copyright">&copy; 2026 Temitope Akinboyewa</div>
+    </div>
+  </footer>
+</body>
+</html>

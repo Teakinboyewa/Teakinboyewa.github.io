@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Download Landsat from EarthExplorer | Temitope Akinboyewa</title>
+  <meta name="description" content="Starter guide for beginners: Download Landsat from EarthExplorer. Create a free USGS account and download a Landsat scene.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="container nav" aria-label="Main">
+      <a class="brand" href="index.html">Temitope Akinboyewa</a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" onclick="var l=document.getElementById('nav-links');l.classList.toggle('open');this.setAttribute('aria-expanded',l.classList.contains('open'))">&#9776;</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="awards.html">Awards</a></li>
+        <li><a href="presentations.html">Presentations</a></li>
+        <li><a href="teaching.html">Teaching</a></li>
+        <li class="has-sub"><a href="learning.html">Learning</a>
+          <ul class="sub-menu">
+            <li><a href="learning-gis.html">GIS</a></li>
+            <li><a href="learning-remote-sensing.html" aria-current="page">Remote Sensing</a></li>
+            <li><a href="learning-geoai.html">GeoAI</a></li>
+          </ul>
+        </li>
+        <li><a href="links.html">Links</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-head">
+      <div class="container">
+        <div class="crumbs"><a href="learning.html">Learning</a> &rsaquo; <a href="learning-remote-sensing.html">Remote Sensing</a> &rsaquo; <a href="learning-remote-sensing.html#starter">Starter guides</a></div>
+        <div class="eyebrow">Starter guide 7 of 8</div>
+        <h1>Download Landsat from EarthExplorer</h1>
+        <p>Create a free USGS account and download a Landsat scene.</p>
+        <div class="lesson-facts"><span><strong>Time:</strong> about 30 minutes</span><span><strong>Level:</strong> complete beginner</span></div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container lesson">
+<h2>Watch</h2>
+<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/oRK5v1PWU6Q" title="How to download Landsat 9 images from EarthExplorer USGS" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+<p class="video-credit">&ldquo;How to download Landsat 9 images from EarthExplorer USGS&rdquo; by GIS Educator. <a href="https://www.youtube.com/watch?v=oRK5v1PWU6Q">Watch on YouTube</a>.</p>
+
+<h2>1. Create a free account</h2>
+<ol class="steps">
+  <li>Go to <a href="https://ers.cr.usgs.gov/register">ers.cr.usgs.gov/register</a> and fill in the form. It asks a few questions about you and how you will use the data. Students can choose education.</li>
+  <li>Confirm your account from the email USGS sends you.</li>
+</ol>
+
+<h2>2. Search for a scene</h2>
+<ol class="steps">
+  <li>Go to <a href="https://earthexplorer.usgs.gov">earthexplorer.usgs.gov</a> and click <span class="ui">Login</span>.</li>
+  <li>In the <span class="ui">Search Criteria</span> tab, type a place name in the search box, or click on the map to drop points around your area.</li>
+  <li>Set a <strong>date range</strong>. Then set <strong>cloud cover</strong> to 0&ndash;10%, so you only see clear images.</li>
+  <li>Click <span class="ui">Data Sets</span>. Open <span class="ui">Landsat &rsaquo; Landsat Collection 2 Level-2</span> and tick <span class="ui">Landsat 8-9 OLI/TIRS C2 L2</span>.</li>
+  <li>Click <span class="ui">Results</span>.</li>
+</ol>
+
+<h2>3. Choose and download</h2>
+<ol class="steps">
+  <li>Each result has small icons. The <strong>footprint</strong> icon shows the scene's outline on the map, and the <strong>browse</strong> icon shows a preview picture. Use them to pick a clear scene that covers your area.</li>
+  <li>Click the <strong>download</strong> icon (an arrow pointing down).</li>
+  <li>Choose the full <strong>product bundle</strong>, or pick only the files you need. Week 3 lists which files to download.</li>
+  <li>Unzip the download into your week's <code>data</code> folder. Landsat files come as <code>.tar</code>; see <a href="starter-files-and-folders.html">Organize your files and folders</a> for how to unzip them.</li>
+</ol>
+
+<h2>Common problems</h2>
+<ul>
+  <li><strong>No results.</strong> Widen the date range, raise the cloud cover limit, or check that you ticked the data set.</li>
+  <li><strong>The download button does nothing.</strong> Make sure you are logged in, and allow pop-ups for the site.</li>
+  <li><strong>The file is huge.</strong> A full Landsat scene is about 1 GB. Download only the bands you need.</li>
+</ul>
+
+        <nav class="lesson-nav" aria-label="Guide navigation"><a href="starter-plugins.html">&larr; Install a plugin</a><a href="starter-copernicus.html">Explore Sentinel-2 in Copernicus Browser &rarr;</a></nav>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <strong>Temitope Akinboyewa</strong>
+          Department of Geography<br>
+          The Pennsylvania State University, University Park, PA<br>
+          <a href="mailto:tea5209@psu.edu">tea5209@psu.edu</a>
+        </div>
+        <div class="footer-links">
+          <a href="https://scholar.google.com/citations?user=yQsUY8MAAAAJ&hl=en">Google Scholar</a>
+          <a href="https://www.researchgate.net/profile/Temitope-Akinboyewa">ResearchGate</a>
+          <a href="https://github.com/Teakinboyewa">GitHub</a>
+          <a href="files/Akinboyewa_CV.pdf">CV</a>
+        </div>
+      </div>
+      <div class="copyright">&copy; 2026 Temitope Akinboyewa</div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Organize your files and folders | Temitope Akinboyewa</title>
+  <meta name="description" content="Starter guide for beginners: Organize your files and folders. Simple habits that prevent most beginner problems.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="container nav" aria-label="Main">
+      <a class="brand" href="index.html">Temitope Akinboyewa</a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" onclick="var l=document.getElementById('nav-links');l.classList.toggle('open');this.setAttribute('aria-expanded',l.classList.contains('open'))">&#9776;</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="awards.html">Awards</a></li>
+        <li><a href="presentations.html">Presentations</a></li>
+        <li><a href="teaching.html">Teaching</a></li>
+        <li class="has-sub"><a href="learning.html">Learning</a>
+          <ul class="sub-menu">
+            <li><a href="learning-gis.html">GIS</a></li>
+            <li><a href="learning-remote-sensing.html" aria-current="page">Remote Sensing</a></li>
+            <li><a href="learning-geoai.html">GeoAI</a></li>
+          </ul>
+        </li>
+        <li><a href="links.html">Links</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-head">
+      <div class="container">
+        <div class="crumbs"><a href="learning.html">Learning</a> &rsaquo; <a href="learning-remote-sensing.html">Remote Sensing</a> &rsaquo; <a href="learning-remote-sensing.html#starter">Starter guides</a></div>
+        <div class="eyebrow">Starter guide 4 of 8</div>
+        <h1>Organize your files and folders</h1>
+        <p>Simple habits that prevent most beginner problems.</p>
+        <div class="lesson-facts"><span><strong>Time:</strong> about 10 minutes</span><span><strong>Level:</strong> complete beginner</span></div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container lesson">
+
+<p>Most problems beginners have in GIS are not about GIS at all. They are about files that cannot be found, folders that are messy, or downloads that were never unzipped. Ten minutes of setup now saves hours later.</p>
+
+<h2>1. Make one course folder</h2>
+<p>Create a folder for the course, with one folder for each week inside it:</p>
+<p><code>Documents/RS_course/week01/</code><br><code>Documents/RS_course/week02/</code><br><code>Documents/RS_course/week03/</code></p>
+<p>Inside each week, keep a <code>data</code> folder for downloads and an <code>output</code> folder for results you create.</p>
+
+<h2>2. Use simple names</h2>
+<ul>
+  <li>Use letters, numbers, and underscores. Write <code>landsat_july.tif</code>, not <code>Landsat image (July) final!!.tif</code>.</li>
+  <li>Avoid spaces, accents, and symbols such as <code>&amp; # ( ) !</code> in file and folder names. Some GIS tools fail with them, often with confusing error messages.</li>
+  <li>Keep paths short. Avoid burying data ten folders deep.</li>
+</ul>
+
+<h2>3. Unzip before you use data</h2>
+<p>Most GIS data comes as a compressed file (<code>.zip</code>, <code>.tar</code>, or <code>.tar.gz</code>). QGIS cannot always use files inside them directly.</p>
+<ul>
+  <li><strong>Windows:</strong> right-click a <code>.zip</code> file and choose <span class="ui">Extract All</span>. For <code>.tar</code> files (such as Landsat downloads), install the free program <a href="https://www.7-zip.org/">7-Zip</a>, then right-click and choose <span class="ui">7-Zip &rsaquo; Extract Here</span>.</li>
+  <li><strong>Mac:</strong> double-click the file.</li>
+</ul>
+
+<h2>4. Keep files that belong together, together</h2>
+<p>Some data are made of several files with the same name. A shapefile, for example, has <code>.shp</code>, <code>.shx</code>, <code>.dbf</code>, and <code>.prj</code> files. Always move or copy all of them together.</p>
+
+<h2>5. Watch out for cloud-synced folders</h2>
+<p>Folders synced by OneDrive, Google Drive, or Dropbox sometimes lock files while they upload, or keep files "online only". If QGIS cannot open or save a file, try working in a folder that is not synced, and back up your results afterwards.</p>
+
+<h2>6. Back up your work</h2>
+<p>Large raw downloads can always be downloaded again. Your QGIS projects, notes, and results cannot. Copy your <code>output</code> folders to a USB drive or cloud storage at the end of each week.</p>
+
+        <nav class="lesson-nav" aria-label="Guide navigation"><a href="starter-qgis-interface.html">&larr; Find your way around QGIS</a><a href="starter-basemaps.html">Add a basemap &rarr;</a></nav>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <strong>Temitope Akinboyewa</strong>
+          Department of Geography<br>
+          The Pennsylvania State University, University Park, PA<br>
+          <a href="mailto:tea5209@psu.edu">tea5209@psu.edu</a>
+        </div>
+        <div class="footer-links">
+          <a href="https://scholar.google.com/citations?user=yQsUY8MAAAAJ&hl=en">Google Scholar</a>
+          <a href="https://www.researchgate.net/profile/Temitope-Akinboyewa">ResearchGate</a>
+          <a href="https://github.com/Teakinboyewa">GitHub</a>
+          <a href="files/Akinboyewa_CV.pdf">CV</a>
+        </div>
+      </div>
+      <div class="copyright">&copy; 2026 Temitope Akinboyewa</div>
+    </div>
+  </footer>
+</body>
+</html>

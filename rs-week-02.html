@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Week 2: GIS fundamentals | Temitope Akinboyewa</title>
+  <meta name="description" content="Remote Sensing course, week 2: GIS fundamentals. How a GIS stores, organizes, and analyzes spatial data, and how to make a proper map in QGIS.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="container nav" aria-label="Main">
+      <a class="brand" href="index.html">Temitope Akinboyewa</a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" onclick="var l=document.getElementById('nav-links');l.classList.toggle('open');this.setAttribute('aria-expanded',l.classList.contains('open'))">&#9776;</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="awards.html">Awards</a></li>
+        <li><a href="presentations.html">Presentations</a></li>
+        <li><a href="teaching.html">Teaching</a></li>
+        <li class="has-sub"><a href="learning.html">Learning</a>
+          <ul class="sub-menu">
+            <li><a href="learning-gis.html">GIS</a></li>
+            <li><a href="learning-remote-sensing.html" aria-current="page">Remote Sensing</a></li>
+            <li><a href="learning-geoai.html">GeoAI</a></li>
+          </ul>
+        </li>
+        <li><a href="links.html">Links</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-head">
+      <div class="container">
+        <div class="crumbs"><a href="learning.html">Learning</a> &rsaquo; <a href="learning-remote-sensing.html">Remote Sensing</a> &rsaquo; Week 2</div>
+        <div class="eyebrow">Week 2 &middot; QGIS</div>
+        <h1>GIS fundamentals</h1>
+        <p>How a GIS stores, organizes, and analyzes spatial data, and how to make a proper map in QGIS.</p>
+        <div class="lesson-facts"><span><strong>Time:</strong> about 3 hours (1 hour reading, 2 hours lab)</span><span><strong>Tool:</strong> QGIS</span><span><strong>Data:</strong> Natural Earth</span></div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container lesson">
+        <ul class="toc"><li><a href="#objectives">Objectives</a></li><li><a href="#notes">Lecture notes</a></li><li><a href="#terms">Key terms</a></li><li><a href="#lab">Lab</a></li><li><a href="#check">Check your understanding</a></li><li><a href="#resources">Resources</a></li></ul>
+
+<h2 id="objectives">Learning objectives</h2>
+<p>By the end of this lesson, you will be able to:</p>
+<ul>
+  <li>Explain what a GIS is and how it works together with remote sensing.</li>
+  <li>Compare the vector and raster data models and choose the right one for a task.</li>
+  <li>Read and edit attribute tables.</li>
+  <li>Explain coordinate reference systems, datums, and map projections, and reproject data correctly.</li>
+  <li>Recognize common geospatial file formats.</li>
+  <li>Run core operations in QGIS: selection, buffer, and clip.</li>
+  <li>Design a complete map with a print layout.</li>
+</ul>
+
+<h2 id="notes">Lecture notes</h2>
+
+<h3>1. What is a GIS?</h3>
+<p>A geographic information system (GIS) is a system for capturing, storing, analyzing, and displaying data that is tied to locations on the Earth. A GIS has five parts: hardware, software, data, people, and methods.</p>
+<p>GIS and remote sensing work hand in hand. Remote sensing produces images of the surface. A GIS combines those images with other data, such as field plots, property boundaries, roads, and rivers, so you can ask questions like "How much forest was lost within 1 km of new roads?" Throughout this course you will use QGIS, a free and open-source GIS.</p>
+
+<h3>2. Vector and raster data</h3>
+<p>A GIS stores the world in one of two ways.</p>
+<figure>
+<svg viewBox="0 0 720 356" role="img" aria-labelledby="f3t" font-family="Inter,Arial,sans-serif"><title id="f3t">The same landscape stored as vector features and as a raster grid</title><rect x="30" y="40" width="280" height="280" fill="#eef4e8" stroke="#5b6676"/><circle cx="214.8" cy="135.2" r="47.6" fill="#8fb8d6" stroke="#2a6fb0" stroke-width="2"/><polyline points="30.0,247.2 35.6,249.9 41.2,252.5 46.8,255.1 52.4,257.5 58.0,259.7 63.6,261.7 69.2,263.3 74.8,264.7 80.4,265.8 86.0,266.5 91.6,266.8 97.2,266.7 102.8,266.3 108.4,265.5 114.0,264.4 119.6,262.9 125.2,261.1 130.8,259.1 136.4,256.9 142.0,254.4 147.6,251.8 153.2,249.2 158.8,246.5 164.4,243.8 170.0,241.1 175.6,238.6 181.2,236.3 186.8,234.1 192.4,232.3 198.0,230.7 203.6,229.4 209.2,228.4 214.8,227.8 220.4,227.6 226.0,227.8 231.6,228.3 237.2,229.2 242.8,230.4 248.4,231.9 254.0,233.8 259.6,235.9 265.2,238.2 270.8,240.7 276.4,243.3 282.0,246.0 287.6,248.7 293.2,251.4 298.8,254.0 304.4,256.4 310.0,258.7" fill="none" stroke="#2a6fb0" stroke-width="4"/><circle cx="86.0" cy="101.6" r="7" fill="#b9893a" stroke="#fff" stroke-width="2"/><circle cx="136.4" cy="185.6" r="7" fill="#b9893a" stroke="#fff" stroke-width="2"/><circle cx="276.4" cy="213.6" r="7" fill="#b9893a" stroke="#fff" stroke-width="2"/><text x="170.0" y="26" text-anchor="middle" font-size="14" font-weight="600" fill="#1b2430">Vector</text><text x="170.0" y="345" text-anchor="middle" font-size="11" fill="#5b6676">Points (towns), a line (river), a polygon (lake)</text><rect x="410.0" y="40.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="430.0" y="40.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="450.0" y="40.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="470.0" y="40.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="490.0" y="40.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="510.0" y="40.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="530.0" y="40.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="550.0" y="40.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="570.0" y="40.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="590.0" y="40.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="610.0" y="40.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="630.0" y="40.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="650.0" y="40.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="670.0" y="40.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="410.0" y="60.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="430.0" y="60.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="450.0" y="60.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="470.0" y="60.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="490.0" y="60.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="510.0" y="60.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="530.0" y="60.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="550.0" y="60.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="570.0" y="60.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="590.0" y="60.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="610.0" y="60.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="630.0" y="60.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="650.0" y="60.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="670.0" y="60.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="410.0" y="80.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="430.0" y="80.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="450.0" y="80.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="470.0" y="80.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="490.0" y="80.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="510.0" y="80.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="530.0" y="80.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="550.0" y="80.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="570.0" y="80.0" width="20.0" height="20.0" fill="#8fb8d6" stroke="#fff" stroke-width=".8"/><rect x="590.0" y="80.0" width="20.0" height="20.0" fill="#8fb8d6" stroke="#fff" stroke-width=".8"/><rect x="610.0" y="80.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="630.0" y="80.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="650.0" y="80.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="670.0" y="80.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="410.0" y="100.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="430.0" y="100.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="450.0" y="100.0" width="20.0" height="20.0" fill="#b9893a" stroke="#fff" stroke-width=".8"/><rect x="470.0" y="100.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="490.0" y="100.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="510.0" y="100.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="530.0" y="100.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="550.0" y="100.0" width="20.0" height="20.0" fill="#8fb8d6" stroke="#fff" stroke-width=".8"/><rect x="570.0" y="100.0" width="20.0" height="20.0" fill="#8fb8d6" stroke="#fff" stroke-width=".8"/><rect x="590.0" y="100.0" width="20.0" height="20.0" fill="#8fb8d6" stroke="#fff" stroke-width=".8"/><rect x="610.0" y="100.0" width="20.0" height="20.0" fill="#8fb8d6" stroke="#fff" stroke-width=".8"/><rect x="630.0" y="100.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="650.0" y="100.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="670.0" y="100.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="410.0" y="120.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="430.0" y="120.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="450.0" y="120.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="470.0" y="120.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="490.0" y="120.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="510.0" y="120.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="530.0" y="120.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="550.0" y="120.0" width="20.0" height="20.0" fill="#8fb8d6" stroke="#fff" stroke-width=".8"/><rect x="570.0" y="120.0" width="20.0" height="20.0" fill="#8fb8d6" stroke="#fff" stroke-width=".8"/><rect x="590.0" y="120.0" width="20.0" height="20.0" fill="#8fb8d6" stroke="#fff" stroke-width=".8"/><rect x="610.0" y="120.0" width="20.0" height="20.0" fill="#8fb8d6" stroke="#fff" stroke-width=".8"/><rect x="630.0" y="120.0" width="20.0" height="20.0" fill="#8fb8d6" stroke="#fff" stroke-width=".8"/><rect x="650.0" y="120.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="670.0" y="120.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="410.0" y="140.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="430.0" y="140.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="450.0" y="140.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="470.0" y="140.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="490.0" y="140.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="510.0" y="140.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="530.0" y="140.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="550.0" y="140.0" width="20.0" height="20.0" fill="#8fb8d6" stroke="#fff" stroke-width=".8"/><rect x="570.0" y="140.0" width="20.0" height="20.0" fill="#8fb8d6" stroke="#fff" stroke-width=".8"/><rect x="590.0" y="140.0" width="20.0" height="20.0" fill="#8fb8d6" stroke="#fff" stroke-width=".8"/><rect x="610.0" y="140.0" width="20.0" height="20.0" fill="#8fb8d6" stroke="#fff" stroke-width=".8"/><rect x="630.0" y="140.0" width="20.0" height="20.0" fill="#8fb8d6" stroke="#fff" stroke-width=".8"/><rect x="650.0" y="140.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="670.0" y="140.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="410.0" y="160.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="430.0" y="160.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="450.0" y="160.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="470.0" y="160.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="490.0" y="160.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="510.0" y="160.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="530.0" y="160.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="550.0" y="160.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="570.0" y="160.0" width="20.0" height="20.0" fill="#8fb8d6" stroke="#fff" stroke-width=".8"/><rect x="590.0" y="160.0" width="20.0" height="20.0" fill="#8fb8d6" stroke="#fff" stroke-width=".8"/><rect x="610.0" y="160.0" width="20.0" height="20.0" fill="#8fb8d6" stroke="#fff" stroke-width=".8"/><rect x="630.0" y="160.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="650.0" y="160.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="670.0" y="160.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="410.0" y="180.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="430.0" y="180.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="450.0" y="180.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="470.0" y="180.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="490.0" y="180.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="510.0" y="180.0" width="20.0" height="20.0" fill="#b9893a" stroke="#fff" stroke-width=".8"/><rect x="530.0" y="180.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="550.0" y="180.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="570.0" y="180.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="590.0" y="180.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="610.0" y="180.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="630.0" y="180.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="650.0" y="180.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="670.0" y="180.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="410.0" y="200.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="430.0" y="200.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="450.0" y="200.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="470.0" y="200.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="490.0" y="200.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="510.0" y="200.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="530.0" y="200.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="550.0" y="200.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="570.0" y="200.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="590.0" y="200.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="610.0" y="200.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="630.0" y="200.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="650.0" y="200.0" width="20.0" height="20.0" fill="#b9893a" stroke="#fff" stroke-width=".8"/><rect x="670.0" y="200.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="410.0" y="220.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="430.0" y="220.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="450.0" y="220.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="470.0" y="220.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="490.0" y="220.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="510.0" y="220.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="530.0" y="220.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="550.0" y="220.0" width="20.0" height="20.0" fill="#2a6fb0" stroke="#fff" stroke-width=".8"/><rect x="570.0" y="220.0" width="20.0" height="20.0" fill="#2a6fb0" stroke="#fff" stroke-width=".8"/><rect x="590.0" y="220.0" width="20.0" height="20.0" fill="#2a6fb0" stroke="#fff" stroke-width=".8"/><rect x="610.0" y="220.0" width="20.0" height="20.0" fill="#2a6fb0" stroke="#fff" stroke-width=".8"/><rect x="630.0" y="220.0" width="20.0" height="20.0" fill="#2a6fb0" stroke="#fff" stroke-width=".8"/><rect x="650.0" y="220.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="670.0" y="220.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="410.0" y="240.0" width="20.0" height="20.0" fill="#2a6fb0" stroke="#fff" stroke-width=".8"/><rect x="430.0" y="240.0" width="20.0" height="20.0" fill="#2a6fb0" stroke="#fff" stroke-width=".8"/><rect x="450.0" y="240.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="470.0" y="240.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="490.0" y="240.0" width="20.0" height="20.0" fill="#2a6fb0" stroke="#fff" stroke-width=".8"/><rect x="510.0" y="240.0" width="20.0" height="20.0" fill="#2a6fb0" stroke="#fff" stroke-width=".8"/><rect x="530.0" y="240.0" width="20.0" height="20.0" fill="#2a6fb0" stroke="#fff" stroke-width=".8"/><rect x="550.0" y="240.0" width="20.0" height="20.0" fill="#2a6fb0" stroke="#fff" stroke-width=".8"/><rect x="570.0" y="240.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="590.0" y="240.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="610.0" y="240.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="630.0" y="240.0" width="20.0" height="20.0" fill="#2a6fb0" stroke="#fff" stroke-width=".8"/><rect x="650.0" y="240.0" width="20.0" height="20.0" fill="#2a6fb0" stroke="#fff" stroke-width=".8"/><rect x="670.0" y="240.0" width="20.0" height="20.0" fill="#2a6fb0" stroke="#fff" stroke-width=".8"/><rect x="410.0" y="260.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="430.0" y="260.0" width="20.0" height="20.0" fill="#2a6fb0" stroke="#fff" stroke-width=".8"/><rect x="450.0" y="260.0" width="20.0" height="20.0" fill="#2a6fb0" stroke="#fff" stroke-width=".8"/><rect x="470.0" y="260.0" width="20.0" height="20.0" fill="#2a6fb0" stroke="#fff" stroke-width=".8"/><rect x="490.0" y="260.0" width="20.0" height="20.0" fill="#2a6fb0" stroke="#fff" stroke-width=".8"/><rect x="510.0" y="260.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="530.0" y="260.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="550.0" y="260.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="570.0" y="260.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="590.0" y="260.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="610.0" y="260.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="630.0" y="260.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="650.0" y="260.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="670.0" y="260.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="410.0" y="280.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="430.0" y="280.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="450.0" y="280.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="470.0" y="280.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="490.0" y="280.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="510.0" y="280.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="530.0" y="280.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="550.0" y="280.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="570.0" y="280.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="590.0" y="280.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="610.0" y="280.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="630.0" y="280.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="650.0" y="280.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="670.0" y="280.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="410.0" y="300.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="430.0" y="300.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="450.0" y="300.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="470.0" y="300.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="490.0" y="300.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="510.0" y="300.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="530.0" y="300.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="550.0" y="300.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="570.0" y="300.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="590.0" y="300.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="610.0" y="300.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="630.0" y="300.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="650.0" y="300.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="670.0" y="300.0" width="20.0" height="20.0" fill="#eef4e8" stroke="#fff" stroke-width=".8"/><rect x="410" y="40" width="280" height="280" fill="none" stroke="#5b6676"/><text x="550.0" y="26" text-anchor="middle" font-size="14" font-weight="600" fill="#1b2430">Raster</text><text x="550.0" y="345" text-anchor="middle" font-size="11" fill="#5b6676">The same features as a grid of cells</text></svg>
+  <figcaption>Figure 1. The same landscape stored as vector features (left) and as a raster grid (right). Note how the raster turns the smooth river and lake edges into blocky cells.</figcaption>
+</figure>
+<ul>
+  <li><strong>Vector</strong> data represent features as <strong>points</strong> (towns, field plots), <strong>lines</strong> (roads, rivers), or <strong>polygons</strong> (lakes, forest stands, countries). Each feature has a row of attributes. Vector data are best for features with clear boundaries.</li>
+  <li><strong>Raster</strong> data divide space into a grid of equal cells. Each cell holds one value, such as reflectance, elevation, or a land-cover class. The cell size sets the level of detail. Raster data are best for things that vary continuously, and all satellite images are rasters.</li>
+</ul>
+<div class="table-wrap"><table class="lesson-table">
+  <thead><tr><th></th><th>Vector</th><th>Raster</th></tr></thead>
+  <tbody>
+    <tr><td>Building blocks</td><td>Points, lines, polygons</td><td>Grid of cells (pixels)</td></tr>
+    <tr><td>Best for</td><td>Discrete features with clear edges</td><td>Continuous surfaces and images</td></tr>
+    <tr><td>Examples</td><td>Roads, plots, administrative boundaries</td><td>Satellite images, elevation models, land-cover maps</td></tr>
+    <tr><td>Common formats</td><td>GeoPackage, Shapefile, GeoJSON</td><td>GeoTIFF</td></tr>
+  </tbody>
+</table></div>
+
+<h3>3. Attributes</h3>
+<p>Every vector feature is linked to a row in an <strong>attribute table</strong>. Each column is a <strong>field</strong> with a type: integer, decimal, text, or date. You can sort, filter, and calculate fields, and you can <strong>join</strong> a table to a layer using a shared field, such as a country code.</p>
+
+<h3>4. Coordinate reference systems</h3>
+<p>A <strong>coordinate reference system (CRS)</strong> tells the GIS where each coordinate is on the Earth. Getting the CRS right is the most important habit in GIS.</p>
+<ul>
+  <li>A <strong>datum</strong> is a model of the Earth's shape and its position. WGS 84 and NAD83 are common datums.</li>
+  <li>A <strong>geographic CRS</strong> uses latitude and longitude in degrees. The most common is WGS 84, code <code>EPSG:4326</code>.</li>
+  <li>A <strong>projected CRS</strong> flattens the Earth onto a plane and uses units such as meters. Every projection distorts area, shape, distance, or direction, so you choose one that keeps the property you need. For example, use an equal-area projection when you measure area.</li>
+  <li><strong>UTM</strong> (Universal Transverse Mercator) divides the world into 60 zones, each 6&deg; of longitude wide. Within its zone, UTM keeps distortion small and uses meters. The WGS 84 UTM codes are <code>EPSG:326<em>zz</em></code> in the Northern Hemisphere and <code>EPSG:327<em>zz</em></code> in the Southern Hemisphere, where <em>zz</em> is the zone number. To find the zone: zone = floor((longitude + 180) / 6) + 1.</li>
+  <li><strong>EPSG codes</strong> are standard numbers that identify each CRS. You can look them up at <a href="https://epsg.io">epsg.io</a>.</li>
+</ul>
+<div class="callout warn"><p><strong>Common mistake:</strong> QGIS has two very different tools. <em>Set Layer CRS</em> only changes the label that says which CRS the coordinates are in. Use it only when that label is missing or wrong. <em>Reproject Layer</em> actually converts the coordinates into a new CRS. To measure distances or areas in meters, reproject your data to a projected CRS.</p></div>
+<p>QGIS reprojects layers "on the fly", so layers in different CRSs still line up on the map. Calculations, however, use each layer's own CRS. A 1,000-unit buffer on a layer in <code>EPSG:4326</code> is 1,000 <em>degrees</em>, not 1 km.</p>
+
+<h3>5. File formats</h3>
+<ul>
+  <li><strong>GeoPackage (.gpkg):</strong> a single file that can hold many vector and raster layers. It is the default format in QGIS and the one we recommend.</li>
+  <li><strong>Shapefile (.shp):</strong> an older, very common format made of several files with the same name (.shp, .shx, .dbf, and .prj). Always keep them together. Field names are limited to 10 characters.</li>
+  <li><strong>GeoJSON (.geojson):</strong> a text format common on the web.</li>
+  <li><strong>GeoTIFF (.tif):</strong> the standard format for raster data, including satellite images.</li>
+  <li><strong>CSV:</strong> a table that can hold point coordinates in two columns, such as latitude and longitude from a GPS.</li>
+</ul>
+
+<h3>6. Core operations</h3>
+<ul>
+  <li><strong>Select by attribute:</strong> choose features whose values meet a condition, such as <code>"POP_MAX" &gt; 1000000</code>.</li>
+  <li><strong>Select by location:</strong> choose features based on where they are relative to another layer, such as towns inside a buffer.</li>
+  <li><strong>Buffer:</strong> create a zone at a set distance around features.</li>
+  <li><strong>Clip:</strong> cut one layer to the boundary of another.</li>
+  <li><strong>Intersect</strong> and <strong>dissolve:</strong> combine overlapping layers, or merge features that share a value.</li>
+  <li><strong>Field calculator:</strong> compute new fields, such as area or length.</li>
+</ul>
+
+<h3>7. Making a good map</h3>
+<p>A finished map needs a clear title, a legend, a scale bar, a north arrow, and a note on the data sources and CRS. Use color with purpose: a <em>categorized</em> style for classes (such as land-cover types) and a <em>graduated</em> style for amounts (such as population). Keep the layout simple, so the reader's eye goes to the main message first.</p>
+
+<h2 id="terms">Key terms</h2>
+<dl class="terms">
+  <dt>GIS</dt><dd>A system for capturing, storing, analyzing, and displaying geographic data.</dd>
+  <dt>Vector</dt><dd>A data model that stores features as points, lines, and polygons.</dd>
+  <dt>Raster</dt><dd>A data model that stores values in a grid of equal-sized cells.</dd>
+  <dt>Attribute table</dt><dd>The table of information linked to the features of a vector layer.</dd>
+  <dt>Datum</dt><dd>A model of the Earth's shape and position used as the basis for coordinates.</dd>
+  <dt>Coordinate reference system (CRS)</dt><dd>The definition that ties coordinates to locations on the Earth.</dd>
+  <dt>Map projection</dt><dd>A method of flattening the curved Earth onto a plane. Every projection causes some distortion.</dd>
+  <dt>EPSG code</dt><dd>A standard number that identifies a CRS, such as EPSG:4326 for WGS 84.</dd>
+  <dt>Reprojection</dt><dd>Converting coordinates from one CRS to another.</dd>
+  <dt>Buffer</dt><dd>A zone drawn at a set distance around features.</dd>
+</dl>
+
+<h2 id="lab">Lab 2: Mapping a country's rivers and towns</h2>
+<p>In this lab, you work with real vector data to practice attribute tables, CRSs, geoprocessing, and map design.</p>
+<div class="callout"><p><strong>Data:</strong> from <a href="https://www.naturalearthdata.com/downloads/">Natural Earth</a>, download three 1:10m layers: <em>Admin 0 &ndash; Countries</em>, <em>Populated Places</em>, and <em>Rivers + lake centerlines</em>. Unzip them into one folder.</p></div>
+
+<h3>Part A. Explore the data</h3>
+<div class="starter-links"><strong>New to this?</strong> See the starter guides: <a href="starter-files-and-folders.html">Organize your files and folders</a> &middot; <a href="starter-qgis-interface.html">Find your way around QGIS</a></div>
+<ol class="steps">
+  <li>Open the QGIS project you saved in Week 1. Drag the three shapefiles (<code>ne_10m_admin_0_countries</code>, <code>ne_10m_populated_places</code>, <code>ne_10m_rivers_lake_centerlines</code>) from the Browser panel onto the map.</li>
+  <li>Right-click the countries layer and choose <span class="ui">Open Attribute Table</span>. Explore the fields. Find the <code>NAME</code> field.</li>
+  <li>Open <span class="ui">Layer Properties &rsaquo; Information</span> for each layer and note its CRS. All three use a geographic CRS (WGS 84, <code>EPSG:4326</code>).</li>
+</ol>
+
+<h3>Part B. Select and export your country</h3>
+<ol class="steps">
+  <li>Choose a country. Use <span class="ui">Select Features by Expression</span> (the &epsilon; icon on the toolbar) with an expression such as <code>"NAME" = 'Nigeria'</code>.</li>
+  <li>Right-click the layer and choose <span class="ui">Export &rsaquo; Save Selected Features As</span>. Choose the GeoPackage format and name the layer <code>country</code>.</li>
+  <li>Find your country's UTM zone from its central longitude, using the formula in the lecture notes. Note the matching EPSG code. If your country spans several zones, pick the zone at its center.</li>
+</ol>
+
+<h3>Part C. Reproject and compare areas</h3>
+<ol class="steps">
+  <li>Open the field calculator on <code>country</code> and create a decimal field <code>area_deg</code> with the expression <code>area($geometry)</code>. This gives the area in the layer's own units, which here are square degrees.</li>
+  <li>Run <span class="ui">Vector &rsaquo; Data Management Tools &rsaquo; Reproject Layer</span> on <code>country</code>, with your UTM CRS as the target. Save the result as <code>country_utm</code> in your GeoPackage.</li>
+  <li>On <code>country_utm</code>, create a field <code>area_km2</code> with <code>area($geometry) / 1000000</code>. Compare it with the official area of your country. Why is <code>area_deg</code> not useful for measuring area?</li>
+</ol>
+
+<h3>Part D. Clip, buffer, and select</h3>
+<ol class="steps">
+  <li>Reproject the rivers and populated places layers to the same UTM CRS.</li>
+  <li>Run <span class="ui">Vector &rsaquo; Geoprocessing Tools &rsaquo; Clip</span> to cut the rivers to <code>country_utm</code>. Do the same for populated places.</li>
+  <li>Run <span class="ui">Vector &rsaquo; Geoprocessing Tools &rsaquo; Buffer</span> on the clipped rivers with a distance of 10,000 m (10 km). Turn on <em>Dissolve result</em>.</li>
+  <li>Use <span class="ui">Vector &rsaquo; Research Tools &rsaquo; Select by Location</span> to select the towns that intersect the river buffer. How many of the country's towns are within 10 km of a major river?</li>
+</ol>
+
+<h3>Part E. Style and lay out the map</h3>
+<ol class="steps">
+  <li>Style the towns with a <strong>graduated</strong> symbol based on <code>POP_MAX</code>, so bigger cities get bigger circles. Style the rivers in blue and the buffer in a light, semi-transparent color.</li>
+  <li>Add labels for the largest cities under <span class="ui">Layer Properties &rsaquo; Labels</span>.</li>
+  <li>Open <span class="ui">Project &rsaquo; New Print Layout</span>. Add the map, a title, a legend, a scale bar, a north arrow, and a text box with the data source (Natural Earth) and the CRS.</li>
+  <li>Export the map with <span class="ui">Layout &rsaquo; Export as PDF</span>.</li>
+</ol>
+
+<h3>What to submit</h3>
+<ul>
+  <li>Your finished map as a PDF.</li>
+  <li>Your country's area in square degrees and in km&sup2;, the official area, and two to three sentences explaining the difference.</li>
+  <li>The number of towns within 10 km of a major river, and the UTM EPSG code you used.</li>
+</ul>
+
+<h2 id="check">Check your understanding</h2>
+<details class="q"><summary>1. Would you store a road network as vector or raster? What about a land-cover map made from satellite imagery?</summary><p>Roads are discrete lines with clear positions, so vector is the natural choice. A land-cover map made from an image covers every pixel with a class, so it is usually a raster.</p></details>
+<details class="q"><summary>2. What is the difference between "Set Layer CRS" and "Reproject Layer"?</summary><p>Set Layer CRS only changes the label that says which CRS the coordinates are in; the coordinates themselves do not change. Reproject Layer converts the coordinates into a new CRS, creating a new layer.</p></details>
+<details class="q"><summary>3. What is EPSG:4326, and why is it a poor choice for measuring distances?</summary><p>EPSG:4326 is the geographic CRS WGS 84, with coordinates in degrees of latitude and longitude. The ground length of a degree of longitude shrinks toward the poles, so distances and areas in degrees do not match real-world meters.</p></details>
+<details class="q"><summary>4. State College, Pennsylvania, is at about 77.86&deg; W. What UTM zone and EPSG code would you use?</summary><p>zone = floor((&minus;77.86 + 180) / 6) + 1 = floor(17.02) + 1 = 18. It is in the Northern Hemisphere, so the code is EPSG:32618 (WGS 84 / UTM zone 18N).</p></details>
+<details class="q"><summary>5. Which files must you keep together when you share a shapefile?</summary><p>At least the .shp (geometry), .shx (index), and .dbf (attributes). Also keep the .prj file, which stores the CRS. Without it, QGIS does not know where the data belong.</p></details>
+<details class="q"><summary>6. Name five elements a finished map should have.</summary><p>A title, a legend, a scale bar, a north arrow, and a note on data sources and CRS.</p></details>
+
+<h2 id="resources">Resources</h2>
+<ul>
+  <li><a href="https://docs.qgis.org/latest/en/docs/gentle_gis_introduction/">A Gentle Introduction to GIS</a>, QGIS documentation.</li>
+  <li><a href="https://docs.qgis.org/latest/en/docs/training_manual/">QGIS Training Manual</a>, especially the modules on vector analysis and map composition.</li>
+  <li><a href="https://www.naturalearthdata.com/downloads/">Natural Earth</a>, free public-domain map data.</li>
+  <li><a href="https://epsg.io">epsg.io</a>, for looking up coordinate reference systems.</li>
+</ul>
+
+        <nav class="lesson-nav" aria-label="Lesson navigation"><a href="rs-week-01.html">&larr; Week 1: Remote sensing fundamentals</a><a href="rs-week-03.html">Week 3: Landsat &rarr;</a></nav>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <strong>Temitope Akinboyewa</strong>
+          Department of Geography<br>
+          The Pennsylvania State University, University Park, PA<br>
+          <a href="mailto:tea5209@psu.edu">tea5209@psu.edu</a>
+        </div>
+        <div class="footer-links">
+          <a href="https://scholar.google.com/citations?user=yQsUY8MAAAAJ&hl=en">Google Scholar</a>
+          <a href="https://www.researchgate.net/profile/Temitope-Akinboyewa">ResearchGate</a>
+          <a href="https://github.com/Teakinboyewa">GitHub</a>
+          <a href="files/Akinboyewa_CV.pdf">CV</a>
+        </div>
+      </div>
+      <div class="copyright">&copy; 2026 Temitope Akinboyewa</div>
+    </div>
+  </footer>
+</body>
+</html>

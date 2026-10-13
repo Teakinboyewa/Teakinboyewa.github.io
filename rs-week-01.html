@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Week 1: Remote sensing fundamentals | Temitope Akinboyewa</title>
+  <meta name="description" content="Remote Sensing course, week 1: Remote sensing fundamentals. What remote sensing is, how sensors record electromagnetic energy, and how to read a satellite image.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="container nav" aria-label="Main">
+      <a class="brand" href="index.html">Temitope Akinboyewa</a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" onclick="var l=document.getElementById('nav-links');l.classList.toggle('open');this.setAttribute('aria-expanded',l.classList.contains('open'))">&#9776;</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="awards.html">Awards</a></li>
+        <li><a href="presentations.html">Presentations</a></li>
+        <li><a href="teaching.html">Teaching</a></li>
+        <li class="has-sub"><a href="learning.html">Learning</a>
+          <ul class="sub-menu">
+            <li><a href="learning-gis.html">GIS</a></li>
+            <li><a href="learning-remote-sensing.html" aria-current="page">Remote Sensing</a></li>
+            <li><a href="learning-geoai.html">GeoAI</a></li>
+          </ul>
+        </li>
+        <li><a href="links.html">Links</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-head">
+      <div class="container">
+        <div class="crumbs"><a href="learning.html">Learning</a> &rsaquo; <a href="learning-remote-sensing.html">Remote Sensing</a> &rsaquo; Week 1</div>
+        <div class="eyebrow">Week 1 &middot; QGIS</div>
+        <h1>Remote sensing fundamentals</h1>
+        <p>What remote sensing is, how sensors record electromagnetic energy, and how to read a satellite image.</p>
+        <div class="lesson-facts"><span><strong>Time:</strong> about 3 hours (1 hour reading, 2 hours lab)</span><span><strong>Tools:</strong> QGIS, Copernicus Browser</span><span><strong>Data:</strong> Sentinel-2</span></div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container lesson">
+        <ul class="toc"><li><a href="#objectives">Objectives</a></li><li><a href="#notes">Lecture notes</a></li><li><a href="#terms">Key terms</a></li><li><a href="#lab">Lab</a></li><li><a href="#check">Check your understanding</a></li><li><a href="#resources">Resources</a></li></ul>
+
+<h2 id="objectives">Learning objectives</h2>
+<div class="starter-links"><strong>New to this?</strong> See the starter guides: <a href="starter-gis-and-rs.html">What are GIS and remote sensing?</a></div>
+<p>By the end of this lesson, you will be able to:</p>
+<ul>
+  <li>Define remote sensing and describe the steps from energy source to finished map.</li>
+  <li>Describe the electromagnetic spectrum and the parts of it used to observe the Earth.</li>
+  <li>Explain why vegetation, soil, and water have different spectral signatures.</li>
+  <li>Tell passive sensors from active sensors, and describe the main satellite orbits.</li>
+  <li>Explain spatial, spectral, temporal, and radiometric resolution and the trade-offs between them.</li>
+  <li>Read true-color and false-color images and explain what each color means.</li>
+</ul>
+
+<h2 id="notes">Lecture notes</h2>
+
+<h3>1. What is remote sensing?</h3>
+<p>Remote sensing is the science of getting information about the Earth's surface without touching it. Sensors on satellites, aircraft, or drones measure the electromagnetic energy that the surface reflects or emits. We then turn those measurements into information, such as where forests are, how healthy they are, and how they change over time.</p>
+<p>Most remote sensing follows the same chain of steps:</p>
+<ol>
+  <li><strong>Energy source.</strong> Usually the Sun. Some sensors provide their own energy.</li>
+  <li><strong>Travel through the atmosphere.</strong> Energy passes through the atmosphere on its way down and again on its way back up.</li>
+  <li><strong>Interaction with the target.</strong> The surface reflects, absorbs, or transmits the energy, depending on what it is made of.</li>
+  <li><strong>Recording by the sensor.</strong> The sensor measures the energy that reaches it.</li>
+  <li><strong>Transmission and processing.</strong> Data are sent to ground stations and processed into images.</li>
+  <li><strong>Interpretation and analysis.</strong> Analysts extract information, by eye or with algorithms.</li>
+  <li><strong>Application.</strong> The information supports decisions in forestry, agriculture, water management, urban planning, and disaster response.</li>
+</ol>
+
+<h3>2. The electromagnetic spectrum</h3>
+<p>Electromagnetic energy travels as waves. We describe it by its <strong>wavelength</strong> (&lambda;), the distance between two wave peaks. Shorter wavelengths carry more energy. In optical remote sensing, wavelengths are usually given in micrometers (&micro;m) or nanometers (nm), where 1 &micro;m = 1,000 nm.</p>
+<figure>
+<svg viewBox="0 0 720 222" role="img" aria-labelledby="f1t" font-family="Inter,Arial,sans-serif"><title id="f1t">The electromagnetic spectrum, zoomed in on the visible and infrared regions</title><defs><linearGradient id="vis" x1="0" x2="1"><stop offset="0" stop-color="#6a4bc4"/><stop offset=".25" stop-color="#2f6fd0"/><stop offset=".5" stop-color="#3aa45a"/><stop offset=".75" stop-color="#e8c23a"/><stop offset="1" stop-color="#d0402f"/></linearGradient></defs><rect x="10" y="44" width="70" height="38" fill="#d9dee3" stroke="#fff" stroke-width="2"/><text x="45.0" y="68" text-anchor="middle" font-size="13" font-weight="600" fill="#1b2430">Gamma</text><rect x="80" y="44" width="70" height="38" fill="#d9dee3" stroke="#fff" stroke-width="2"/><text x="115.0" y="68" text-anchor="middle" font-size="13" font-weight="600" fill="#1b2430">X-ray</text><rect x="150" y="44" width="80" height="38" fill="#c9c2e6" stroke="#fff" stroke-width="2"/><text x="190.0" y="68" text-anchor="middle" font-size="13" font-weight="600" fill="#1b2430">UV</text><rect x="230" y="44" width="70" height="38" fill="url(#vis)" stroke="#fff" stroke-width="2"/><text x="265.0" y="68" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">Visible</text><rect x="300" y="44" width="200" height="38" fill="#e8b7a0" stroke="#fff" stroke-width="2"/><text x="400.0" y="68" text-anchor="middle" font-size="13" font-weight="600" fill="#1b2430">Infrared</text><rect x="500" y="44" width="120" height="38" fill="#cfe0c3" stroke="#fff" stroke-width="2"/><text x="560.0" y="68" text-anchor="middle" font-size="13" font-weight="600" fill="#1b2430">Microwave</text><rect x="620" y="44" width="90" height="38" fill="#d9dee3" stroke="#fff" stroke-width="2"/><text x="665.0" y="68" text-anchor="middle" font-size="13" font-weight="600" fill="#1b2430">Radio</text><text x="10" y="30" font-size="12" fill="#5b6676">&#8592; Shorter wavelength, higher energy</text><text x="710" y="30" text-anchor="end" font-size="12" fill="#5b6676">Longer wavelength, lower energy &#8594;</text><rect x="10" y="150" width="70" height="38" fill="#2f6fd0" stroke="#fff" stroke-width="2"/><text x="45.0" y="174" text-anchor="middle" font-size="12" font-weight="600" fill="#fff">Blue</text><text x="45.0" y="208" text-anchor="middle" font-size="12" fill="#5b6676">0.4&#8211;0.5 &#181;m</text><rect x="80" y="150" width="70" height="38" fill="#3aa45a" stroke="#fff" stroke-width="2"/><text x="115.0" y="174" text-anchor="middle" font-size="12" font-weight="600" fill="#fff">Green</text><text x="115.0" y="208" text-anchor="middle" font-size="12" fill="#5b6676">0.5&#8211;0.6 &#181;m</text><rect x="150" y="150" width="70" height="38" fill="#d0402f" stroke="#fff" stroke-width="2"/><text x="185.0" y="174" text-anchor="middle" font-size="12" font-weight="600" fill="#fff">Red</text><text x="185.0" y="208" text-anchor="middle" font-size="12" fill="#5b6676">0.6&#8211;0.7 &#181;m</text><rect x="220" y="150" width="150" height="38" fill="#a8513a" stroke="#fff" stroke-width="2"/><text x="295.0" y="174" text-anchor="middle" font-size="12" font-weight="600" fill="#fff">Near infrared (NIR)</text><text x="295.0" y="208" text-anchor="middle" font-size="12" fill="#5b6676">0.7&#8211;1.3 &#181;m</text><rect x="370" y="150" width="150" height="38" fill="#c27a52" stroke="#fff" stroke-width="2"/><text x="445.0" y="174" text-anchor="middle" font-size="12" font-weight="600" fill="#fff">Shortwave IR (SWIR)</text><text x="445.0" y="208" text-anchor="middle" font-size="12" fill="#5b6676">1.3&#8211;3.0 &#181;m</text><text x="535.0" y="174" text-anchor="middle" font-size="16" fill="#5b6676">&#8230;</text><rect x="550" y="150" width="160" height="38" fill="#e0a37f" stroke="#fff" stroke-width="2"/><text x="630.0" y="174" text-anchor="middle" font-size="12" font-weight="600" fill="#fff">Thermal IR (TIR)</text><text x="630.0" y="208" text-anchor="middle" font-size="12" fill="#5b6676">8&#8211;14 &#181;m</text><path d="M230,82 L10,150 M500,82 L710,150" stroke="#5b6676" stroke-dasharray="4 4" fill="none"/><text x="360" y="120" text-anchor="middle" font-size="12" font-weight="600" fill="#1f5f5b">Regions used most in optical and thermal Earth observation</text></svg>
+  <figcaption>Figure 1. The electromagnetic spectrum (not to scale). Optical satellites such as Landsat and Sentinel-2 record visible, near-infrared, and shortwave-infrared light. Thermal sensors record emitted heat, and radar works in the microwave region.</figcaption>
+</figure>
+<p>The regions you will use most in this course are:</p>
+<ul>
+  <li><strong>Visible (0.4&ndash;0.7 &micro;m):</strong> blue, green, and red light, the only part our eyes can see.</li>
+  <li><strong>Near infrared, NIR (0.7&ndash;1.3 &micro;m):</strong> strongly reflected by healthy leaves, which makes it the most important region for vegetation.</li>
+  <li><strong>Shortwave infrared, SWIR (1.3&ndash;3.0 &micro;m):</strong> sensitive to the water content of leaves and soil.</li>
+  <li><strong>Thermal infrared, TIR (about 8&ndash;14 &micro;m):</strong> heat emitted by the surface, used to estimate surface temperature.</li>
+  <li><strong>Microwave (1 mm&ndash;1 m):</strong> used by radar, which can see through clouds.</li>
+</ul>
+
+<h3>3. How energy interacts with the atmosphere and the surface</h3>
+<p>When energy hits a surface, it is <strong>reflected</strong>, <strong>absorbed</strong>, or <strong>transmitted</strong>. Together, these three always add up to the incoming energy. Optical sensors measure the reflected part, and we usually express it as <strong>reflectance</strong>: the fraction of incoming energy that is reflected, from 0 to 1.</p>
+<p>The atmosphere changes the signal in two ways:</p>
+<ul>
+  <li><strong>Scattering.</strong> Gas molecules scatter short wavelengths much more than long ones (Rayleigh scattering). This is why the sky is blue, and why the blue band of a satellite image often looks hazy.</li>
+  <li><strong>Absorption.</strong> Water vapor, carbon dioxide, and ozone absorb energy at certain wavelengths. Sensors are designed to look through <strong>atmospheric windows</strong>, where little energy is absorbed.</li>
+</ul>
+<p>Later in the course you will use <em>surface reflectance</em> products, which have been corrected for these atmospheric effects.</p>
+
+<h3>4. Spectral signatures</h3>
+<p>Each material reflects a different amount of energy at each wavelength. Plotting reflectance against wavelength gives that material's <strong>spectral signature</strong>. Remote sensing works because different surfaces have different signatures.</p>
+<figure>
+<svg viewBox="0 0 720 334" role="img" aria-labelledby="f2t" font-family="Inter,Arial,sans-serif"><title id="f2t">Schematic spectral reflectance curves of vegetation, soil, and water with Landsat 8/9 band positions</title><rect x="84.8" y="30" width="17.7" height="250" fill="#b9893a" fill-opacity=".14"/><text x="93.6" y="24" text-anchor="middle" font-size="10" fill="#8a6420">B2</text><rect x="108.4" y="30" width="17.7" height="250" fill="#b9893a" fill-opacity=".14"/><text x="117.2" y="24" text-anchor="middle" font-size="10" fill="#8a6420">B3</text><rect x="140.9" y="30" width="8.9" height="250" fill="#b9893a" fill-opacity=".14"/><text x="145.3" y="24" text-anchor="middle" font-size="10" fill="#8a6420">B4</text><rect x="202.9" y="30" width="8.9" height="250" fill="#b9893a" fill-opacity=".14"/><text x="207.3" y="24" text-anchor="middle" font-size="10" fill="#8a6420">B5</text><rect x="415.4" y="30" width="23.6" height="250" fill="#b9893a" fill-opacity=".14"/><text x="427.2" y="24" text-anchor="middle" font-size="10" fill="#8a6420">B6</text><rect x="574.9" y="30" width="53.1" height="250" fill="#b9893a" fill-opacity=".14"/><text x="601.4" y="24" text-anchor="middle" font-size="10" fill="#8a6420">B7</text><line x1="70" y1="280.0" x2="690" y2="280.0" stroke="#e3e7ec"/><text x="62" y="284.0" text-anchor="end" font-size="11" fill="#5b6676">0.0</text><line x1="70" y1="196.66666666666666" x2="690" y2="196.66666666666666" stroke="#e3e7ec"/><text x="62" y="200.66666666666666" text-anchor="end" font-size="11" fill="#5b6676">0.2</text><line x1="70" y1="113.33333333333331" x2="690" y2="113.33333333333331" stroke="#e3e7ec"/><text x="62" y="117.33333333333331" text-anchor="end" font-size="11" fill="#5b6676">0.4</text><line x1="70" y1="30.0" x2="690" y2="30.0" stroke="#e3e7ec"/><text x="62" y="34.0" text-anchor="end" font-size="11" fill="#5b6676">0.6</text><text x="70.0" y="298" text-anchor="middle" font-size="11" fill="#5b6676">0.4</text><text x="188.1" y="298" text-anchor="middle" font-size="11" fill="#5b6676">0.8</text><text x="306.2" y="298" text-anchor="middle" font-size="11" fill="#5b6676">1.2</text><text x="424.3" y="298" text-anchor="middle" font-size="11" fill="#5b6676">1.6</text><text x="542.4" y="298" text-anchor="middle" font-size="11" fill="#5b6676">2.0</text><text x="660.5" y="298" text-anchor="middle" font-size="11" fill="#5b6676">2.4</text><line x1="70" y1="30" x2="70" y2="280" stroke="#5b6676"/><line x1="70" y1="280" x2="690" y2="280" stroke="#5b6676"/><text x="380" y="322" text-anchor="middle" font-size="12" fill="#1b2430">Wavelength (&#181;m)</text><text x="20" y="155" text-anchor="middle" font-size="12" fill="#1b2430" transform="rotate(-90 20 155)">Reflectance</text><polyline points="70.0,263.3 84.8,259.2 99.5,255.0 114.3,230.0 129.0,250.8 146.8,263.3 155.6,255.0 164.5,175.8 173.3,113.3 202.9,80.0 261.9,71.7 306.2,92.5 335.7,105.0 365.2,155.0 380.0,188.3 409.5,155.0 439.0,142.5 468.6,150.8 498.1,196.7 527.6,246.7 557.1,221.7 601.4,200.8 645.7,221.7 690.0,246.7" fill="none" stroke="#3d7f5a" stroke-width="3" stroke-linejoin="round"/><polyline points="70.0,246.7 99.5,234.2 129.0,217.5 158.6,200.8 188.1,188.3 247.1,167.5 335.7,146.7 365.2,155.0 380.0,163.3 424.3,130.0 483.3,125.8 512.9,155.0 542.4,142.5 601.4,121.7 690.0,138.3" fill="none" stroke="#a0682a" stroke-width="3" stroke-linejoin="round"/><polyline points="70.0,246.7 99.5,250.8 129.0,263.3 158.6,271.7 188.1,275.8 217.6,277.9 276.7,280.0 690.0,280.0" fill="none" stroke="#2a6fb0" stroke-width="3" stroke-linejoin="round"/><line x1="540" y1="48" x2="566" y2="48" stroke="#3d7f5a" stroke-width="3"/><text x="574" y="52" font-size="12" fill="#1b2430">Healthy vegetation</text><line x1="540" y1="68" x2="566" y2="68" stroke="#a0682a" stroke-width="3"/><text x="574" y="72" font-size="12" fill="#1b2430">Dry bare soil</text><line x1="540" y1="88" x2="566" y2="88" stroke="#2a6fb0" stroke-width="3"/><text x="574" y="92" font-size="12" fill="#1b2430">Clear water</text><line x1="114.3" y1="227.0" x2="114.3" y2="200.8" stroke="#3d7f5a"/><text x="114.3" y="196.8" text-anchor="middle" font-size="10" fill="#3d7f5a">green peak</text><text x="157.5" y="155.0" text-anchor="end" font-size="10" fill="#3d7f5a">red edge</text><text x="380.0" y="204.3" text-anchor="middle" font-size="10" fill="#3d7f5a">water absorption</text></svg>
+  <figcaption>Figure 2. Typical spectral signatures (schematic, for illustration). Shaded strips show the positions of Landsat 8/9 bands 2&ndash;7, which you will use in Week 3.</figcaption>
+</figure>
+<ul>
+  <li><strong>Healthy vegetation.</strong> Chlorophyll absorbs blue and red light for photosynthesis and reflects some green, which is why leaves look green. At about 0.7 &micro;m reflectance jumps sharply (the <em>red edge</em>), because the internal structure of the leaf scatters NIR strongly. In the SWIR, water in the leaf absorbs energy, with deep dips near 1.45 and 1.95 &micro;m. Stressed or dry vegetation reflects less NIR and more red and SWIR.</li>
+  <li><strong>Soil.</strong> Reflectance usually rises steadily with wavelength. Moisture, organic matter, and texture all lower it: wet, dark soils reflect less than dry, sandy ones.</li>
+  <li><strong>Water.</strong> Clear water reflects a little blue and green light and absorbs almost all NIR and SWIR, so it looks very dark in those bands. Sediment or algae increase its visible reflectance.</li>
+</ul>
+<div class="callout"><p><strong>Why this matters for forests:</strong> the big difference between red and NIR reflectance in healthy vegetation is the basis of vegetation indices such as NDVI (Week 5). It is also why forests are easy to separate from water and bare soil in NIR imagery.</p></div>
+
+<h3>5. Sensors, platforms, and orbits</h3>
+<p><strong>Passive sensors</strong> measure natural energy: sunlight reflected by the surface, or heat it emits. Examples are Landsat's OLI, Sentinel-2's MSI, and MODIS. Optical passive sensors cannot see through clouds and do not work at night (thermal sensors can work at night).</p>
+<p><strong>Active sensors</strong> send out their own energy and measure what comes back. Radar (for example Sentinel-1) works day and night and through clouds. LiDAR sends laser pulses and records their return time to measure the height and structure of vegetation. You will use LiDAR from GEDI in Weeks 10&ndash;11.</p>
+<p>Sensors can be mounted on ground instruments, drones, aircraft, or satellites. Most Earth observation satellites use one of two orbits:</p>
+<ul>
+  <li><strong>Sun-synchronous, near-polar orbit</strong> (about 600&ndash;800 km up). The satellite passes over each place at the same local time, so lighting is consistent from image to image. Landsat and Sentinel-2 use this orbit.</li>
+  <li><strong>Geostationary orbit</strong> (about 35,786 km up). The satellite stays above one point on the equator and images the same area many times a day, but at coarse detail. Weather satellites such as GOES use this orbit.</li>
+</ul>
+
+<h3>6. The four resolutions</h3>
+<p>"Resolution" has four meanings in remote sensing. No sensor is best at all four; designers have to trade one against another.</p>
+<div class="table-wrap"><table class="lesson-table">
+  <thead><tr><th>Resolution</th><th>What it describes</th><th>Examples</th></tr></thead>
+  <tbody>
+    <tr><td>Spatial</td><td>The ground size of one pixel</td><td>Sentinel-2: 10 m &middot; Landsat: 30 m &middot; MODIS: 250&ndash;1,000 m</td></tr>
+    <tr><td>Spectral</td><td>The number and width of bands</td><td>Multispectral sensors have a few to about a dozen bands; hyperspectral sensors have hundreds of narrow bands</td></tr>
+    <tr><td>Temporal</td><td>How often the same place is imaged</td><td>MODIS: 1&ndash;2 days &middot; Sentinel-2 (two satellites): 5 days &middot; one Landsat satellite: 16 days</td></tr>
+    <tr><td>Radiometric</td><td>How many brightness levels a pixel can record</td><td>8-bit = 256 levels &middot; Landsat 8: 12-bit = 4,096 levels &middot; Landsat 9: 14-bit = 16,384 levels</td></tr>
+  </tbody>
+</table></div>
+<p>For example, MODIS images most of the Earth every day but with large pixels, while Landsat shows much finer detail but returns only every 16 days. Choosing data means matching these trade-offs to your question.</p>
+
+<h3>7. Digital images, bands, and composites</h3>
+<p>A satellite image is a <strong>raster</strong>: a grid of pixels. Each spectral band is one layer of that grid, and each pixel stores a number, called a <strong>digital number (DN)</strong>, that can be converted to radiance or reflectance.</p>
+<p>A screen has only three color channels: red, green, and blue. To display an image, we choose three bands and assign one to each channel. The result is a <strong>composite</strong>:</p>
+<ul>
+  <li><strong>True color</strong> puts the red, green, and blue bands in the red, green, and blue channels. The image looks the way our eyes would see it.</li>
+  <li><strong>False color (color infrared)</strong> puts NIR in the red channel, red in the green channel, and green in the blue channel. Healthy vegetation appears bright red, because it reflects so much NIR. Water appears very dark, and urban areas appear cyan or gray.</li>
+</ul>
+<div class="table-wrap"><table class="lesson-table">
+  <thead><tr><th>Composite</th><th>Sentinel-2 bands (R, G, B)</th><th>Landsat 8/9 bands (R, G, B)</th></tr></thead>
+  <tbody>
+    <tr><td>True color</td><td>B4, B3, B2</td><td>4, 3, 2</td></tr>
+    <tr><td>False color (color infrared)</td><td>B8, B4, B3</td><td>5, 4, 3</td></tr>
+  </tbody>
+</table></div>
+
+<h2 id="terms">Key terms</h2>
+<dl class="terms">
+  <dt>Remote sensing</dt><dd>Gathering information about an object or area without physical contact, by measuring electromagnetic energy.</dd>
+  <dt>Wavelength</dt><dd>The distance between two peaks of a wave. Shorter wavelengths carry more energy.</dd>
+  <dt>Reflectance</dt><dd>The fraction of incoming energy that a surface reflects, from 0 to 1.</dd>
+  <dt>Spectral signature</dt><dd>A material's pattern of reflectance across wavelengths.</dd>
+  <dt>Atmospheric window</dt><dd>A range of wavelengths where the atmosphere absorbs little energy, so sensors can see the surface.</dd>
+  <dt>Passive sensor</dt><dd>A sensor that records natural energy, either reflected sunlight or emitted heat.</dd>
+  <dt>Active sensor</dt><dd>A sensor that sends its own energy and measures the return, such as radar or LiDAR.</dd>
+  <dt>Sun-synchronous orbit</dt><dd>A near-polar orbit that passes over each place at the same local time.</dd>
+  <dt>Band</dt><dd>One range of wavelengths recorded by a sensor, stored as one layer of an image.</dd>
+  <dt>Digital number (DN)</dt><dd>The raw integer stored in each pixel, which can be converted to radiance or reflectance.</dd>
+  <dt>Composite</dt><dd>An image made by displaying three bands in the red, green, and blue channels of a screen.</dd>
+</dl>
+
+<h2 id="lab">Lab 1: Seeing beyond the visible</h2>
+<p>In this lab, you set up QGIS, explore Sentinel-2 imagery in your browser, and measure the spectral signatures of real surfaces.</p>
+<div class="callout"><p><strong>You will need:</strong> a computer with internet access, the latest <em>Long Term Release (LTR)</em> of QGIS, and a free Copernicus Data Space account. Pick a study area that has forest, water, bare soil or fields, and some buildings. Your home region is a good choice.</p></div>
+
+<h3>Part A. Get to know QGIS</h3>
+<div class="starter-links"><strong>New to this?</strong> See the starter guides: <a href="starter-install-qgis.html">Install QGIS</a> &middot; <a href="starter-qgis-interface.html">Find your way around QGIS</a> &middot; <a href="starter-basemaps.html">Add a basemap</a></div>
+<ol class="steps">
+  <li>Download and install the QGIS Long Term Release from <a href="https://qgis.org/download/">qgis.org</a>. Open QGIS and start a new empty project.</li>
+  <li>Find the main parts of the window: the <strong>Browser</strong> panel (your files and data sources), the <strong>Layers</strong> panel (what is on the map), the <strong>map canvas</strong>, and the <strong>status bar</strong> at the bottom, which shows the cursor's coordinates and the project's coordinate reference system (CRS). If a panel is missing, turn it on under <span class="ui">View &rsaquo; Panels</span>.</li>
+  <li>In the Browser panel, expand <span class="ui">XYZ Tiles</span> and double-click <span class="ui">OpenStreetMap</span> to add a basemap.</li>
+  <li>Use the scroll wheel to zoom and drag to pan until you find your study area. Save the project with <span class="ui">Project &rsaquo; Save As</span>. You will reuse it in Week 2.</li>
+</ol>
+
+<h3>Part B. Compare true color and false color</h3>
+<div class="starter-links"><strong>New to this?</strong> See the starter guides: <a href="starter-copernicus.html">Explore Sentinel-2 in Copernicus Browser</a></div>
+<ol class="steps">
+  <li>Go to the <a href="https://browser.dataspace.copernicus.eu">Copernicus Browser</a> and log in. Search for your study area by name.</li>
+  <li>Choose <strong>Sentinel-2 L2A</strong> as the data source, set the maximum cloud cover to about 10%, and pick a date range in the growing season. Select a clear scene from the results.</li>
+  <li>Display the <strong>True color</strong> layer. Take a screenshot.</li>
+  <li>Switch to the <strong>False color</strong> layer (NIR, red, green). Take a screenshot of the same view.</li>
+  <li>Compare the two. Note how forest, fields, water, and buildings look in each. Which surfaces are easier to tell apart in false color?</li>
+</ol>
+
+<h3>Part C. Measure spectral signatures</h3>
+<ol class="steps">
+  <li>In the Copernicus Browser, zoom to a small area (a few kilometers across) that contains all four cover types. Use the download option for an <em>analytical</em> image. Choose GeoTIFF format with 32-bit float values, and select bands B2, B3, B4, B8, B11, and B12. 32-bit float values are reflectance from 0 to 1.</li>
+  <li>In QGIS, add the image with <span class="ui">Layer &rsaquo; Add Layer &rsaquo; Add Raster Layer</span>. If the browser saved each band as a separate file, add all of them.</li>
+  <li>Open <span class="ui">Layer Properties &rsaquo; Symbology</span>. Set the render type to <strong>Multiband color</strong>, then rebuild the true-color and false-color composites from Part B by assigning bands to the red, green, and blue channels.</li>
+  <li>Select the <strong>Identify Features</strong> tool (<span class="ui">Ctrl+Shift+I</span>) and click on a pixel. QGIS shows the value of every band at that pixel.</li>
+  <li>Record values for three pixels each of <strong>forest</strong>, <strong>water</strong>, <strong>bare soil or fields</strong>, and <strong>buildings</strong>. Average the three pixels for each cover type.</li>
+  <li>In a spreadsheet, plot reflectance (y-axis) against each band's central wavelength (x-axis): B2 = 0.49, B3 = 0.56, B4 = 0.665, B8 = 0.842, B11 = 1.61, B12 = 2.19 &micro;m. Draw one line per cover type.</li>
+</ol>
+<div class="callout warn"><p><strong>If you cannot download the image:</strong> complete Parts A and B, and use your screenshots to describe the differences in brightness between cover types. You will download a full scene yourself in Week 3.</p></div>
+
+<h3>What to submit</h3>
+<ul>
+  <li>Your true-color and false-color screenshots, side by side, with three to five sentences comparing them.</li>
+  <li>Your spectral signature chart, with the four cover types labeled.</li>
+  <li>Short answers: Which band best separates forest from water? Which best separates forest from bare soil? Explain using your chart.</li>
+</ul>
+
+<h2 id="check">Check your understanding</h2>
+<details class="q"><summary>1. Why does healthy vegetation look bright red in a color-infrared composite?</summary><p>Leaves reflect near-infrared light very strongly because of their internal structure. In a color-infrared composite, the NIR band is shown in the red channel, so the strong NIR reflection appears as bright red.</p></details>
+<details class="q"><summary>2. Is each of these sensors passive or active: Landsat OLI, Sentinel-1 radar, GEDI LiDAR?</summary><p>Landsat OLI is passive: it records reflected sunlight. Sentinel-1 radar and GEDI LiDAR are active: they send out their own energy (microwaves and laser pulses) and measure what returns.</p></details>
+<details class="q"><summary>3. Why does the blue band often look hazy?</summary><p>The atmosphere scatters short wavelengths much more than long ones (Rayleigh scattering). Blue light is the shortest visible wavelength, so the blue band picks up the most scattered light from the atmosphere.</p></details>
+<details class="q"><summary>4. Give an example of a trade-off between spatial and temporal resolution.</summary><p>MODIS images most places every day, but its pixels are 250&ndash;1,000 m wide. Landsat pixels are 30 m, but one Landsat satellite returns to the same place only every 16 days.</p></details>
+<details class="q"><summary>5. How many brightness levels can a 12-bit sensor record?</summary><p>2<sup>12</sup> = 4,096 levels.</p></details>
+<details class="q"><summary>6. Why does clear water look almost black in NIR and SWIR bands?</summary><p>Water absorbs nearly all incoming NIR and SWIR energy, so very little is reflected back to the sensor.</p></details>
+
+<h2 id="resources">Resources</h2>
+<ul>
+  <li><a href="https://www.earthdata.nasa.gov/learn/backgrounders/remote-sensing">What is Remote Sensing?</a>, NASA Earthdata.</li>
+  <li><a href="https://earthobservatory.nasa.gov/features/FalseColor">Why is that Forest Red and that Cloud Blue? How to Interpret a False-Color Satellite Image</a>, NASA Earth Observatory.</li>
+  <li><a href="https://browser.dataspace.copernicus.eu">Copernicus Browser</a>, for viewing and downloading Sentinel imagery.</li>
+  <li><a href="https://docs.qgis.org/latest/en/docs/training_manual/">QGIS Training Manual</a>, official QGIS documentation.</li>
+</ul>
+
+        <nav class="lesson-nav" aria-label="Lesson navigation"><a href="learning-remote-sensing.html">&larr; All lessons</a><a href="rs-week-02.html">Week 2: GIS fundamentals &rarr;</a></nav>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <strong>Temitope Akinboyewa</strong>
+          Department of Geography<br>
+          The Pennsylvania State University, University Park, PA<br>
+          <a href="mailto:tea5209@psu.edu">tea5209@psu.edu</a>
+        </div>
+        <div class="footer-links">
+          <a href="https://scholar.google.com/citations?user=yQsUY8MAAAAJ&hl=en">Google Scholar</a>
+          <a href="https://www.researchgate.net/profile/Temitope-Akinboyewa">ResearchGate</a>
+          <a href="https://github.com/Teakinboyewa">GitHub</a>
+          <a href="files/Akinboyewa_CV.pdf">CV</a>
+        </div>
+      </div>
+      <div class="copyright">&copy; 2026 Temitope Akinboyewa</div>
+    </div>
+  </footer>
+</body>
+</html>

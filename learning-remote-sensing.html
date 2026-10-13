@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Remote Sensing | Temitope Akinboyewa</title>
-  <meta name="description" content="Learning materials on GIS, remote sensing, and GeoAI by Temitope Akinboyewa.">
+  <meta name="description" content="A 17-week remote sensing course: satellite imagery, forest mapping, LiDAR, and machine learning with QGIS, Google Earth Engine, and Python.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
@@ -35,39 +35,72 @@
   </header>
 
   <main>
-    <section class="page-head">
+    <section class="course-banner" style="background-image:url('assets/img/remote-sensing-banner.jpg')">
       <div class="container">
+        <div class="crumbs"><a href="learning.html">Learning</a> &rsaquo; Remote Sensing</div>
+        <div class="eyebrow">17-week course</div>
         <h1>Remote Sensing</h1>
-        <p>A 17-week lesson plan covering satellite imagery, forest mapping, LiDAR, and machine learning with QGIS, Google Earth Engine (GEE), and Python.</p>
+        <p>From the basics of satellite imagery to forest mapping, LiDAR, and machine learning, using QGIS, Google Earth Engine (GEE), and Python.</p>
       </div>
     </section>
     <section class="section">
       <div class="container">
-        <h2>Lesson Plan</h2>
-        <hr class="rule">
-        <div class="table-wrap">
-          <table class="lesson-table">
-            <thead><tr><th>Week</th><th>Topic</th><th>Main tool</th></tr></thead>
-            <tbody>
-              <tr><td>1</td><td>Remote sensing fundamentals</td><td><span class="tool">QGIS</span></td></tr>
-              <tr><td>2</td><td>GIS fundamentals</td><td><span class="tool">QGIS</span></td></tr>
-              <tr><td>3</td><td>Landsat</td><td><span class="tool">QGIS</span></td></tr>
-              <tr><td>4</td><td>Sentinel-2</td><td><span class="tool">QGIS</span></td></tr>
-              <tr><td>5</td><td>Vegetation indices</td><td><span class="tool">QGIS</span></td></tr>
-              <tr><td>6</td><td>Forest classification</td><td><span class="tool">QGIS</span></td></tr>
-              <tr><td>7</td><td>Forest disturbance</td><td><span class="tool">QGIS</span></td></tr>
-              <tr><td>8</td><td>Change detection</td><td><span class="tool">QGIS</span></td></tr>
-              <tr><td>9</td><td>Google Earth Engine</td><td><span class="tool">GEE</span></td></tr>
-              <tr><td>10</td><td>LiDAR fundamentals</td><td><span class="tool">GEE</span></td></tr>
-              <tr><td>11</td><td>GEDI &amp; biomass</td><td><span class="tool">GEE</span></td></tr>
-              <tr><td>12</td><td>Machine learning fundamentals</td><td><span class="tool">Python</span></td></tr>
-              <tr><td>13</td><td>Random Forest</td><td><span class="tool">Python</span></td></tr>
-              <tr><td>14</td><td>XGBoost/advanced ML</td><td><span class="tool">Python</span></td></tr>
-              <tr><td>15</td><td>Forest waste mapping</td><td><span class="tool">GEE + Python</span></td></tr>
-              <tr><td>16</td><td>Biomass/residue modeling</td><td><span class="tool">GEE + Python</span></td></tr>
-              <tr><td>17</td><td>Capstone research project</td><td><span class="tool">Everything</span></td></tr>
-            </tbody>
-          </table>
+        <div class="two-col">
+          <div>
+            <h2>About this course</h2>
+            <hr class="rule">
+            <p>This course teaches you to turn satellite and LiDAR data into maps and measurements of forests. It starts with the physics of remote sensing and the basics of GIS, then works through Landsat and Sentinel-2 imagery, vegetation indices, classification, and change detection.</p>
+            <p>In the second half, you move to cloud computing with Google Earth Engine and to machine learning in Python. You then apply these skills to map forest waste and model biomass, and finish with a capstone research project.</p>
+          </div>
+          <div>
+            <h3 class="subhead">How it is organized</h3>
+            <ul class="timeline">
+              <li><span class="year">1&ndash;8</span><div><span class="what">Foundations and optical imagery</span><span class="where">QGIS</span></div></li>
+              <li><span class="year">9&ndash;11</span><div><span class="what">Cloud computing, LiDAR, and biomass</span><span class="where">Google Earth Engine</span></div></li>
+              <li><span class="year">12&ndash;14</span><div><span class="what">Machine learning</span><span class="where">Python</span></div></li>
+              <li><span class="year">15&ndash;17</span><div><span class="what">Applications and capstone</span><span class="where">GEE + Python</span></div></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section alt" id="starter">
+      <div class="container">
+        <div class="section-title"><h2>Starter guides</h2></div>
+        <p class="section-intro">New to GIS or remote sensing? These short guides cover the basics, such as installing QGIS and downloading satellite images. Most include a video. Do them before Week 1, or come back to them whenever a lesson links to one.</p>
+        <div class="lesson-grid">
+          <a class="lesson-tile starter" href="starter-gis-and-rs.html"><span class="wk">Starter 1</span><h3>What are GIS and remote sensing?</h3><p>The two big ideas behind this course, in plain words.</p><div class="tile-foot"><span class="vid-badge">&#9654; Video</span><span class="status">15 min</span></div></a>
+          <a class="lesson-tile starter" href="starter-install-qgis.html"><span class="wk">Starter 2</span><h3>Install QGIS</h3><p>Download and install the free GIS software used in this course.</p><div class="tile-foot"><span class="vid-badge">&#9654; Video</span><span class="status">20 min</span></div></a>
+          <a class="lesson-tile starter" href="starter-qgis-interface.html"><span class="wk">Starter 3</span><h3>Find your way around QGIS</h3><p>The main parts of the QGIS window, and how to move around the map.</p><div class="tile-foot"><span class="vid-badge">&#9654; Video</span><span class="status">25 min</span></div></a>
+          <a class="lesson-tile starter" href="starter-files-and-folders.html"><span class="wk">Starter 4</span><h3>Organize your files and folders</h3><p>Simple habits that prevent most beginner problems.</p><div class="tile-foot"><span class="vid-badge">Reading</span><span class="status">10 min</span></div></a>
+          <a class="lesson-tile starter" href="starter-basemaps.html"><span class="wk">Starter 5</span><h3>Add a basemap</h3><p>Put a street map or satellite map under your data for reference.</p><div class="tile-foot"><span class="vid-badge">&#9654; Video</span><span class="status">15 min</span></div></a>
+          <a class="lesson-tile starter" href="starter-plugins.html"><span class="wk">Starter 6</span><h3>Install a plugin</h3><p>Add extra tools to QGIS from the free plugin library.</p><div class="tile-foot"><span class="vid-badge">&#9654; Video</span><span class="status">10 min</span></div></a>
+          <a class="lesson-tile starter" href="starter-earthexplorer.html"><span class="wk">Starter 7</span><h3>Download Landsat from EarthExplorer</h3><p>Create a free USGS account and download a Landsat scene.</p><div class="tile-foot"><span class="vid-badge">&#9654; Video</span><span class="status">30 min</span></div></a>
+          <a class="lesson-tile starter" href="starter-copernicus.html"><span class="wk">Starter 8</span><h3>Explore Sentinel-2 in Copernicus Browser</h3><p>View and download free Sentinel-2 images in your web browser.</p><div class="tile-foot"><span class="vid-badge">&#9654; Video</span><span class="status">25 min</span></div></a>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div class="section-title"><h2>Lessons</h2></div>
+        <div class="lesson-grid">
+          <a class="lesson-tile" href="rs-week-01.html"><span class="wk">Week 1</span><h3>Remote sensing fundamentals</h3><div class="tile-foot"><span class="tool">QGIS</span><span class="status">Start lesson &rarr;</span></div></a>
+          <a class="lesson-tile" href="rs-week-02.html"><span class="wk">Week 2</span><h3>GIS fundamentals</h3><div class="tile-foot"><span class="tool">QGIS</span><span class="status">Start lesson &rarr;</span></div></a>
+          <a class="lesson-tile" href="rs-week-03.html"><span class="wk">Week 3</span><h3>Landsat</h3><div class="tile-foot"><span class="tool">QGIS</span><span class="status">Start lesson &rarr;</span></div></a>
+          <div class="lesson-tile soon"><span class="wk">Week 4</span><h3>Sentinel-2</h3><div class="tile-foot"><span class="tool">QGIS</span><span class="status">Coming soon</span></div></div>
+          <div class="lesson-tile soon"><span class="wk">Week 5</span><h3>Vegetation indices</h3><div class="tile-foot"><span class="tool">QGIS</span><span class="status">Coming soon</span></div></div>
+          <div class="lesson-tile soon"><span class="wk">Week 6</span><h3>Forest classification</h3><div class="tile-foot"><span class="tool">QGIS</span><span class="status">Coming soon</span></div></div>
+          <div class="lesson-tile soon"><span class="wk">Week 7</span><h3>Forest disturbance</h3><div class="tile-foot"><span class="tool">QGIS</span><span class="status">Coming soon</span></div></div>
+          <div class="lesson-tile soon"><span class="wk">Week 8</span><h3>Change detection</h3><div class="tile-foot"><span class="tool">QGIS</span><span class="status">Coming soon</span></div></div>
+          <div class="lesson-tile soon"><span class="wk">Week 9</span><h3>Google Earth Engine</h3><div class="tile-foot"><span class="tool">GEE</span><span class="status">Coming soon</span></div></div>
+          <div class="lesson-tile soon"><span class="wk">Week 10</span><h3>LiDAR fundamentals</h3><div class="tile-foot"><span class="tool">GEE</span><span class="status">Coming soon</span></div></div>
+          <div class="lesson-tile soon"><span class="wk">Week 11</span><h3>GEDI &amp; biomass</h3><div class="tile-foot"><span class="tool">GEE</span><span class="status">Coming soon</span></div></div>
+          <div class="lesson-tile soon"><span class="wk">Week 12</span><h3>Machine learning fundamentals</h3><div class="tile-foot"><span class="tool">Python</span><span class="status">Coming soon</span></div></div>
+          <div class="lesson-tile soon"><span class="wk">Week 13</span><h3>Random Forest</h3><div class="tile-foot"><span class="tool">Python</span><span class="status">Coming soon</span></div></div>
+          <div class="lesson-tile soon"><span class="wk">Week 14</span><h3>XGBoost/advanced ML</h3><div class="tile-foot"><span class="tool">Python</span><span class="status">Coming soon</span></div></div>
+          <div class="lesson-tile soon"><span class="wk">Week 15</span><h3>Forest waste mapping</h3><div class="tile-foot"><span class="tool">GEE + Python</span><span class="status">Coming soon</span></div></div>
+          <div class="lesson-tile soon"><span class="wk">Week 16</span><h3>Biomass/residue modeling</h3><div class="tile-foot"><span class="tool">GEE + Python</span><span class="status">Coming soon</span></div></div>
+          <div class="lesson-tile soon"><span class="wk">Week 17</span><h3>Capstone research project</h3><div class="tile-foot"><span class="tool">Everything</span><span class="status">Coming soon</span></div></div>
         </div>
       </div>
     </section>

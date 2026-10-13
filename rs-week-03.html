@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Week 3: Landsat | Temitope Akinboyewa</title>
+  <meta name="description" content="Remote Sensing course, week 3: Landsat. The Landsat program, its sensors and products, and how to download and prepare a scene in QGIS.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="container nav" aria-label="Main">
+      <a class="brand" href="index.html">Temitope Akinboyewa</a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" onclick="var l=document.getElementById('nav-links');l.classList.toggle('open');this.setAttribute('aria-expanded',l.classList.contains('open'))">&#9776;</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="awards.html">Awards</a></li>
+        <li><a href="presentations.html">Presentations</a></li>
+        <li><a href="teaching.html">Teaching</a></li>
+        <li class="has-sub"><a href="learning.html">Learning</a>
+          <ul class="sub-menu">
+            <li><a href="learning-gis.html">GIS</a></li>
+            <li><a href="learning-remote-sensing.html" aria-current="page">Remote Sensing</a></li>
+            <li><a href="learning-geoai.html">GeoAI</a></li>
+          </ul>
+        </li>
+        <li><a href="links.html">Links</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-head">
+      <div class="container">
+        <div class="crumbs"><a href="learning.html">Learning</a> &rsaquo; <a href="learning-remote-sensing.html">Remote Sensing</a> &rsaquo; Week 3</div>
+        <div class="eyebrow">Week 3 &middot; QGIS</div>
+        <h1>Landsat</h1>
+        <p>The Landsat program, its sensors and products, and how to download and prepare a scene in QGIS.</p>
+        <div class="lesson-facts"><span><strong>Time:</strong> about 3.5 hours (1 hour reading, 2.5 hours lab)</span><span><strong>Tools:</strong> QGIS, USGS EarthExplorer</span><span><strong>Data:</strong> Landsat 8/9 Collection 2 Level-2</span></div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container lesson">
+        <ul class="toc"><li><a href="#objectives">Objectives</a></li><li><a href="#notes">Lecture notes</a></li><li><a href="#terms">Key terms</a></li><li><a href="#lab">Lab</a></li><li><a href="#check">Check your understanding</a></li><li><a href="#resources">Resources</a></li></ul>
+
+<h2 id="objectives">Learning objectives</h2>
+<p>By the end of this lesson, you will be able to:</p>
+<ul>
+  <li>Describe the history of the Landsat program and why its long record matters for forests.</li>
+  <li>Identify the bands of Landsat 8 and 9 and what each is used for.</li>
+  <li>Explain Landsat's orbit, revisit time, and the path/row system.</li>
+  <li>Tell the Collection 2 product levels and tiers apart, and read a Landsat file name.</li>
+  <li>Download Level-2 surface reflectance data from USGS EarthExplorer.</li>
+  <li>Stack bands, apply scale factors, and build band composites in QGIS.</li>
+</ul>
+
+<h2 id="notes">Lecture notes</h2>
+
+<h3>1. The Landsat program</h3>
+<p>Landsat is a joint program of NASA and the U.S. Geological Survey (USGS). It holds the longest continuous record of the Earth's land surface from space.</p>
+<ul>
+  <li><strong>1972:</strong> Landsat 1 (first called ERTS-1) launches.</li>
+  <li><strong>1984:</strong> Landsat 5 launches. It operated until 2013, nearly 29 years.</li>
+  <li><strong>1999:</strong> Landsat 7 launches. In 2003 its Scan Line Corrector failed, leaving wedge-shaped gaps (stripes) in every image since.</li>
+  <li><strong>2008:</strong> USGS makes the entire Landsat archive free and open. Use of the data grows dramatically.</li>
+  <li><strong>2013:</strong> Landsat 8 launches with the OLI and TIRS sensors.</li>
+  <li><strong>2021:</strong> Landsat 9 launches with nearly identical sensors (OLI-2 and TIRS-2).</li>
+</ul>
+<p>Because the record goes back more than 50 years, Landsat is the main source for studying long-term forest change, such as deforestation, regrowth, fire, and harvest. Well-known global forest-loss maps are built from Landsat.</p>
+
+<h3>2. Orbit and coverage</h3>
+<ul>
+  <li>Landsat 8 and 9 fly in a <strong>sun-synchronous, near-polar orbit</strong> about 705 km up, crossing the equator at about 10:00 a.m. local time.</li>
+  <li>Each satellite images the same place every <strong>16 days</strong>. The two are offset by 8 days, so together they revisit every <strong>8 days</strong>.</li>
+  <li>Each scene covers about 185 km &times; 180 km.</li>
+  <li>Scenes are organized in the <strong>Worldwide Reference System-2 (WRS-2)</strong>. A <em>path</em> follows the satellite's ground track and a <em>row</em> is the position along it, so each scene has a fixed path/row number.</li>
+</ul>
+
+<h3>3. Landsat 8 and 9 bands</h3>
+<p>The Operational Land Imager (OLI) records nine reflective bands. The Thermal Infrared Sensor (TIRS) records two thermal bands.</p>
+<div class="table-wrap"><table class="lesson-table">
+  <thead><tr><th>Band</th><th>Name</th><th>Wavelength (&micro;m)</th><th>Pixel size</th><th>Common uses</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Coastal/aerosol</td><td>0.43&ndash;0.45</td><td>30 m</td><td>Coastal water, haze and aerosols</td></tr>
+    <tr><td>2</td><td>Blue</td><td>0.45&ndash;0.51</td><td>30 m</td><td>Water, soil versus vegetation</td></tr>
+    <tr><td>3</td><td>Green</td><td>0.53&ndash;0.59</td><td>30 m</td><td>Vegetation vigor (green peak)</td></tr>
+    <tr><td>4</td><td>Red</td><td>0.64&ndash;0.67</td><td>30 m</td><td>Chlorophyll absorption</td></tr>
+    <tr><td>5</td><td>Near infrared (NIR)</td><td>0.85&ndash;0.88</td><td>30 m</td><td>Biomass, vegetation health, shorelines</td></tr>
+    <tr><td>6</td><td>Shortwave infrared 1 (SWIR 1)</td><td>1.57&ndash;1.65</td><td>30 m</td><td>Moisture in soil and vegetation, burn scars</td></tr>
+    <tr><td>7</td><td>Shortwave infrared 2 (SWIR 2)</td><td>2.11&ndash;2.29</td><td>30 m</td><td>Moisture, geology, burned areas</td></tr>
+    <tr><td>8</td><td>Panchromatic</td><td>0.50&ndash;0.68</td><td>15 m</td><td>Sharpening other bands</td></tr>
+    <tr><td>9</td><td>Cirrus</td><td>1.36&ndash;1.38</td><td>30 m</td><td>Detecting thin, high clouds</td></tr>
+    <tr><td>10</td><td>Thermal infrared 1 (TIRS)</td><td>10.6&ndash;11.19</td><td>100 m*</td><td>Surface temperature</td></tr>
+    <tr><td>11</td><td>Thermal infrared 2 (TIRS)</td><td>11.50&ndash;12.51</td><td>100 m*</td><td>Surface temperature</td></tr>
+  </tbody>
+</table></div>
+<p>*Thermal bands are collected at 100 m and delivered resampled to 30 m.</p>
+
+<h3>4. Collection 2: levels and tiers</h3>
+<p>USGS processes all Landsat data into <strong>Collection 2</strong>. You will meet two processing levels:</p>
+<ul>
+  <li><strong>Level-1</strong> products are calibrated and placed on the map, but they still include the effects of the atmosphere (top-of-atmosphere values).</li>
+  <li><strong>Level-2</strong> products are corrected for the atmosphere. They provide <strong>surface reflectance (SR)</strong> for the reflective bands and <strong>surface temperature (ST)</strong> from the thermal band. Use Level-2 for almost all analysis in this course, especially when you compare images from different dates.</li>
+</ul>
+<p>Each scene also gets a <strong>tier</strong>. <em>Tier 1</em> scenes meet the highest standards of geometric and radiometric quality and are suited to time-series analysis. <em>Tier 2</em> scenes do not meet those standards, often because of heavy cloud cover.</p>
+
+<h3>5. Reading a Landsat file name</h3>
+<p>A file name tells you almost everything about a scene. For example:</p>
+<p><code>LC09_L2SP_016032_20230715_20230717_02_T1_SR_B5.TIF</code></p>
+<div class="table-wrap"><table class="lesson-table">
+  <thead><tr><th>Part</th><th>Meaning</th></tr></thead>
+  <tbody>
+    <tr><td><code>LC09</code></td><td>L = Landsat, C = combined OLI and TIRS, 09 = Landsat 9</td></tr>
+    <tr><td><code>L2SP</code></td><td>Level-2 science product (surface reflectance and surface temperature)</td></tr>
+    <tr><td><code>016032</code></td><td>WRS-2 path 016, row 032</td></tr>
+    <tr><td><code>20230715</code></td><td>Date the image was acquired (YYYYMMDD)</td></tr>
+    <tr><td><code>20230717</code></td><td>Date it was processed</td></tr>
+    <tr><td><code>02</code></td><td>Collection 2</td></tr>
+    <tr><td><code>T1</code></td><td>Tier 1</td></tr>
+    <tr><td><code>SR_B5</code></td><td>The file's contents: surface reflectance, band 5 (NIR)</td></tr>
+  </tbody>
+</table></div>
+<p>A Level-2 download also includes the surface temperature band (<code>ST_B10</code>), quality bands such as <code>QA_PIXEL</code>, and a metadata file ending in <code>_MTL.txt</code>.</p>
+
+<h3>6. Scale factors</h3>
+<p>To save space, Level-2 values are stored as integers. To get real values, apply the Collection 2 scale factors:</p>
+<ul>
+  <li>Surface reflectance = DN &times; 0.0000275 &minus; 0.2</li>
+  <li>Surface temperature (kelvin) = DN &times; 0.00341802 + 149.0. Subtract 273.15 to get &deg;C.</li>
+</ul>
+<p>A value of 0 means "no data" (fill). After scaling, most reflectance values fall between 0 and 1.</p>
+<div class="callout"><p><strong>Tip:</strong> when you only <em>display</em> a composite, scaling makes no difference, because QGIS stretches the colors anyway. You must scale when you compare values, calculate indices, or combine images from different dates.</p></div>
+
+<h3>7. Clouds and the QA_PIXEL band</h3>
+<p>Clouds and their shadows hide the surface, and they are the biggest problem in optical remote sensing. The <code>QA_PIXEL</code> band flags each pixel using individual bits of its value. For example, bit 3 marks cloud, bit 4 marks cloud shadow, bit 5 marks snow, bit 6 marks clear, and bit 7 marks water. In this lab you will look at the band. In Week 9, you will use it to mask clouds automatically in Google Earth Engine.</p>
+
+<h3>8. Band combinations for Landsat 8 and 9</h3>
+<div class="table-wrap"><table class="lesson-table">
+  <thead><tr><th>Composite</th><th>Bands (R, G, B)</th><th>What it shows</th></tr></thead>
+  <tbody>
+    <tr><td>Natural color</td><td>4, 3, 2</td><td>The landscape as our eyes would see it</td></tr>
+    <tr><td>Color infrared</td><td>5, 4, 3</td><td>Healthy vegetation in bright red</td></tr>
+    <tr><td>Agriculture</td><td>6, 5, 2</td><td>Crops and vigorous vegetation in bright green</td></tr>
+    <tr><td>Vegetation analysis</td><td>6, 5, 4</td><td>Differences between vegetation types and moisture</td></tr>
+    <tr><td>False color (urban)</td><td>7, 6, 4</td><td>Built-up areas and bare ground</td></tr>
+  </tbody>
+</table></div>
+
+<h2 id="terms">Key terms</h2>
+<dl class="terms">
+  <dt>OLI / TIRS</dt><dd>The Operational Land Imager and the Thermal Infrared Sensor on Landsat 8. Landsat 9 carries OLI-2 and TIRS-2.</dd>
+  <dt>WRS-2 path/row</dt><dd>The grid system that gives each Landsat scene a fixed location ID.</dd>
+  <dt>Collection 2</dt><dd>The current USGS processing of the whole Landsat archive.</dd>
+  <dt>Level-1</dt><dd>Calibrated, georeferenced data that still include atmospheric effects.</dd>
+  <dt>Level-2</dt><dd>Atmospherically corrected surface reflectance and surface temperature.</dd>
+  <dt>Tier 1</dt><dd>Scenes of the highest quality, suited to time-series analysis.</dd>
+  <dt>Scale factor</dt><dd>The multiplier and offset that turn stored integers into physical values.</dd>
+  <dt>QA_PIXEL</dt><dd>A quality band whose bits flag clouds, shadows, snow, water, and clear pixels.</dd>
+  <dt>Layer stack</dt><dd>Several single-band images combined into one multiband image.</dd>
+</dl>
+
+<h2 id="lab">Lab 3: Download and prepare a Landsat 9 scene</h2>
+<p>In this lab, you download a real Landsat scene of your study area, prepare it in QGIS, and compare band combinations.</p>
+<div class="callout"><p><strong>You will need:</strong> QGIS, a free USGS account (register at <a href="https://ers.cr.usgs.gov/register">ers.cr.usgs.gov</a>), and about 1 GB of free disk space.</p></div>
+
+<h3>Part A. Find and download a scene</h3>
+<div class="starter-links"><strong>New to this?</strong> See the starter guides: <a href="starter-earthexplorer.html">Download Landsat from EarthExplorer</a> &middot; <a href="starter-files-and-folders.html">Organize your files and folders</a></div>
+<ol class="steps">
+  <li>Log in to <a href="https://earthexplorer.usgs.gov">EarthExplorer</a>.</li>
+  <li>In the <span class="ui">Search Criteria</span> tab, find your study area by typing an address or place, or by clicking on the map to draw an area.</li>
+  <li>Set a date range in the growing season, for example June through August of last year. Set cloud cover to 0&ndash;10%.</li>
+  <li>In the <span class="ui">Data Sets</span> tab, choose <span class="ui">Landsat &rsaquo; Landsat Collection 2 Level-2 &rsaquo; Landsat 8-9 OLI/TIRS C2 L2</span>. Click <span class="ui">Results</span>.</li>
+  <li>Use the footprint and preview icons to find a clear Tier 1 scene that covers your study area. Write down its full product name.</li>
+  <li>Click the download icon. You can download the whole bundle or just these files: <code>SR_B2</code> to <code>SR_B7</code>, <code>ST_B10</code>, <code>QA_PIXEL</code>, and <code>MTL.txt</code>. Put them in a new folder.</li>
+</ol>
+
+<h3>Part B. Stack and clip the bands</h3>
+<ol class="steps">
+  <li>In QGIS, open <span class="ui">Raster &rsaquo; Miscellaneous &rsaquo; Build Virtual Raster</span>.</li>
+  <li>For <em>Input layers</em>, select the files <code>SR_B2</code> through <code>SR_B7</code>, in order. Check <strong>Place each input file into a separate band</strong>. Save the output as <code>landsat_stack.vrt</code>.</li>
+  <li>Note how the bands are numbered in the stack:
+    <div class="table-wrap"><table class="lesson-table">
+      <thead><tr><th>Stack band</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr></thead>
+      <tbody><tr><td>Landsat band</td><td>B2 Blue</td><td>B3 Green</td><td>B4 Red</td><td>B5 NIR</td><td>B6 SWIR 1</td><td>B7 SWIR 2</td></tr></tbody>
+    </table></div></li>
+  <li>A full scene is large. Draw a polygon of your study area, or reuse one from Week 2. Then run <span class="ui">Raster &rsaquo; Extraction &rsaquo; Clip Raster by Mask Layer</span> on the stack. Save the result as <code>landsat_clip.tif</code>.</li>
+</ol>
+
+<h3>Part C. Build band composites</h3>
+<ol class="steps">
+  <li>Open <span class="ui">Layer Properties &rsaquo; Symbology</span> for <code>landsat_clip</code> and choose <strong>Multiband color</strong>.</li>
+  <li>Using the stack numbering above, make <strong>natural color</strong> (Landsat 4-3-2, so stack bands 3, 2, 1). Under <em>Min / Max Value Settings</em>, choose <em>Cumulative count cut</em> (2&ndash;98%) to improve contrast.</li>
+  <li>Make <strong>color infrared</strong> (Landsat 5-4-3, so stack bands 4, 3, 2) and <strong>agriculture</strong> (Landsat 6-5-2, so stack bands 5, 4, 1).</li>
+  <li>To compare the composites, right-click the layer and choose <span class="ui">Duplicate Layer</span>, so each composite is its own layer. Export a picture of each with <span class="ui">Project &rsaquo; Import/Export &rsaquo; Export Map to Image</span>.</li>
+</ol>
+
+<h3>Part D. Turn numbers into reflectance and temperature</h3>
+<ol class="steps">
+  <li>Use the Identify tool to click a forest pixel and note the value of stack band 4 (NIR). Apply the scale factor by hand: DN &times; 0.0000275 &minus; 0.2.</li>
+  <li>Open <span class="ui">Raster &rsaquo; Raster Calculator</span> and compute NIR reflectance with <code>"landsat_clip@4" * 0.0000275 - 0.2</code>. Save it as <code>nir_reflectance.tif</code> and check that its values are mostly between 0 and 1.</li>
+  <li>Record the reflectance of forest, water, and bare soil in the NIR. Compare these values with your Sentinel-2 measurements from Week 1.</li>
+  <li>Optional: compute surface temperature in &deg;C from <code>ST_B10</code> with <code>"ST_B10@1" * 0.00341802 + 149.0 - 273.15</code> (use your file's full layer name). Where is your study area hottest? Coolest?</li>
+</ol>
+
+<h3>Part E. Look at the quality band</h3>
+<ol class="steps">
+  <li>Add <code>QA_PIXEL</code> to the map. In <span class="ui">Symbology</span>, choose <strong>Paletted/Unique values</strong> and click <span class="ui">Classify</span>.</li>
+  <li>Turn values on and off to see which ones match clouds, cloud shadows, water, and clear land in your natural-color composite. Take a screenshot.</li>
+</ol>
+
+<h3>What to submit</h3>
+<ul>
+  <li>The full product name of your scene, with each part explained.</li>
+  <li>A figure with your three composites side by side, with two to three sentences on what each shows best.</li>
+  <li>A table of NIR reflectance for forest, water, and bare soil from Landsat, next to your Sentinel-2 values from Week 1. Explain any differences.</li>
+  <li>Your QA_PIXEL screenshot, with a note on how much of your study area is covered by cloud.</li>
+</ul>
+
+<h2 id="check">Check your understanding</h2>
+<details class="q"><summary>1. What do you learn from the scene ID LC08_L2SP_016032_20230715_20230725_02_T1?</summary><p>It is a Landsat 8 OLI/TIRS scene, processed to Level-2 surface reflectance and temperature, at WRS-2 path 16 and row 32. It was acquired on 15 July 2023, processed on 25 July 2023, belongs to Collection 2, and is Tier 1.</p></details>
+<details class="q"><summary>2. What is the difference between Level-1 and Level-2 products?</summary><p>Level-1 products are calibrated and georeferenced but still include the effects of the atmosphere. Level-2 products are corrected for the atmosphere and give surface reflectance and surface temperature, which you can compare across dates.</p></details>
+<details class="q"><summary>3. A Level-2 NIR pixel has a stored value of 15,000. What is its surface reflectance?</summary><p>15,000 &times; 0.0000275 &minus; 0.2 = 0.4125 &minus; 0.2 = 0.2125, or about 21% reflectance.</p></details>
+<details class="q"><summary>4. How often can you get a new Landsat image of the same place, using Landsat 8 and 9 together?</summary><p>Every 8 days. Each satellite repeats every 16 days, and the two are offset by 8 days.</p></details>
+<details class="q"><summary>5. Why do Landsat 7 images after 2003 have stripes?</summary><p>Landsat 7's Scan Line Corrector failed in 2003. Without it, the sensor leaves wedge-shaped gaps in every image.</p></details>
+<details class="q"><summary>6. Which composite would you use to quickly map healthy forest, and why?</summary><p>Color infrared (bands 5, 4, 3). Healthy vegetation reflects strongly in the NIR, which this composite shows in red, so forests stand out in bright red.</p></details>
+
+<h2 id="resources">Resources</h2>
+<ul>
+  <li><a href="https://landsat.gsfc.nasa.gov">Landsat Science</a>, NASA.</li>
+  <li><a href="https://www.usgs.gov/landsat-missions">Landsat Missions</a>, USGS.</li>
+  <li><a href="https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products">Landsat Collection 2 Level-2 Science Products</a>, USGS, including the scale factors.</li>
+  <li><a href="https://www.usgs.gov/landsat-missions/landsat-collection-2-quality-assessment-bands">Landsat Collection 2 Quality Assessment Bands</a>, USGS, explaining each bit of QA_PIXEL.</li>
+  <li><a href="https://earthexplorer.usgs.gov">USGS EarthExplorer</a>, for searching and downloading Landsat data.</li>
+</ul>
+
+        <nav class="lesson-nav" aria-label="Lesson navigation"><a href="rs-week-02.html">&larr; Week 2: GIS fundamentals</a><span>Week 4: Sentinel-2 (coming soon)</span></nav>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <strong>Temitope Akinboyewa</strong>
+          Department of Geography<br>
+          The Pennsylvania State University, University Park, PA<br>
+          <a href="mailto:tea5209@psu.edu">tea5209@psu.edu</a>
+        </div>
+        <div class="footer-links">
+          <a href="https://scholar.google.com/citations?user=yQsUY8MAAAAJ&hl=en">Google Scholar</a>
+          <a href="https://www.researchgate.net/profile/Temitope-Akinboyewa">ResearchGate</a>
+          <a href="https://github.com/Teakinboyewa">GitHub</a>
+          <a href="files/Akinboyewa_CV.pdf">CV</a>
+        </div>
+      </div>
+      <div class="copyright">&copy; 2026 Temitope Akinboyewa</div>
+    </div>
+  </footer>
+</body>
+</html>
