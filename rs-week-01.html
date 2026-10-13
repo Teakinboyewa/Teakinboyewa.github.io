@@ -46,8 +46,8 @@
     </section>
     <section class="section">
       <div class="container lesson">
-        <ul class="toc"><li><a href="#objectives">Objectives</a></li><li><a href="#notes">Lecture notes</a></li><li><a href="#terms">Key terms</a></li><li><a href="#lab">Lab</a></li><li><a href="#check">Check your understanding</a></li><li><a href="#resources">Resources</a></li></ul>
-
+        <nav class="part-grid" aria-label="Parts of this lesson"><a class="part-tile" href="#objectives" data-part="objectives"><span class="part-num">1</span><span class="part-title">Objectives</span><span class="part-meta">What you will learn &middot; 6 goals</span></a><a class="part-tile" href="#notes" data-part="notes"><span class="part-num">2</span><span class="part-title">Lecture notes</span><span class="part-meta">Read &middot; 7 topics</span></a><a class="part-tile" href="#terms" data-part="terms"><span class="part-num">3</span><span class="part-title">Key terms</span><span class="part-meta">Review &middot; 11 terms</span></a><a class="part-tile" href="#lab" data-part="lab"><span class="part-num">4</span><span class="part-title">Lab</span><span class="part-meta">Hands-on &middot; Lab 1</span></a><a class="part-tile" href="#check" data-part="check"><span class="part-num">5</span><span class="part-title">Check your understanding</span><span class="part-meta">Self-test &middot; 6 questions</span></a><a class="part-tile" href="#resources" data-part="resources"><span class="part-num">6</span><span class="part-title">Resources</span><span class="part-meta">Go further &middot; 4 links</span></a></nav>
+<div class="part" data-part="objectives">
 <h2 id="objectives">Learning objectives</h2>
 <div class="starter-links"><strong>New to this?</strong> See the starter guides: <a href="starter-gis-and-rs.html">What are GIS and remote sensing?</a></div>
 <p>By the end of this lesson, you will be able to:</p>
@@ -60,6 +60,10 @@
   <li>Read true-color and false-color images and explain what each color means.</li>
 </ul>
 
+
+<div class="part-next"><a class="btn btn-primary" href="#notes">Next: Lecture notes &rarr;</a></div>
+</div>
+<div class="part" data-part="notes">
 <h2 id="notes">Lecture notes</h2>
 
 <h3>1. What is remote sensing?</h3>
@@ -149,6 +153,10 @@
   </tbody>
 </table></div>
 
+
+<div class="part-next"><a class="btn btn-primary" href="#terms">Next: Key terms &rarr;</a></div>
+</div>
+<div class="part" data-part="terms">
 <h2 id="terms">Key terms</h2>
 <dl class="terms">
   <dt>Remote sensing</dt><dd>Gathering information about an object or area without physical contact, by measuring electromagnetic energy.</dd>
@@ -164,6 +172,10 @@
   <dt>Composite</dt><dd>An image made by displaying three bands in the red, green, and blue channels of a screen.</dd>
 </dl>
 
+
+<div class="part-next"><a class="btn btn-primary" href="#lab">Next: Lab &rarr;</a></div>
+</div>
+<div class="part" data-part="lab">
 <h2 id="lab">Lab 1: Seeing beyond the visible</h2>
 <p>In this lab, you set up QGIS, explore Sentinel-2 imagery in your browser, and measure the spectral signatures of real surfaces.</p>
 <div class="callout"><p><strong>You will need:</strong> a computer with internet access, the latest <em>Long Term Release (LTR)</em> of QGIS, and a free Copernicus Data Space account. Pick a study area that has forest, water, bare soil or fields, and some buildings. Your home region is a good choice.</p></div>
@@ -205,6 +217,10 @@
   <li>Short answers: Which band best separates forest from water? Which best separates forest from bare soil? Explain using your chart.</li>
 </ul>
 
+
+<div class="part-next"><a class="btn btn-primary" href="#check">Next: Check your understanding &rarr;</a></div>
+</div>
+<div class="part" data-part="check">
 <h2 id="check">Check your understanding</h2>
 <details class="q"><summary>1. Why does healthy vegetation look bright red in a color-infrared composite?</summary><p>Leaves reflect near-infrared light very strongly because of their internal structure. In a color-infrared composite, the NIR band is shown in the red channel, so the strong NIR reflection appears as bright red.</p></details>
 <details class="q"><summary>2. Is each of these sensors passive or active: Landsat OLI, Sentinel-1 radar, GEDI LiDAR?</summary><p>Landsat OLI is passive: it records reflected sunlight. Sentinel-1 radar and GEDI LiDAR are active: they send out their own energy (microwaves and laser pulses) and measure what returns.</p></details>
@@ -213,6 +229,10 @@
 <details class="q"><summary>5. How many brightness levels can a 12-bit sensor record?</summary><p>2<sup>12</sup> = 4,096 levels.</p></details>
 <details class="q"><summary>6. Why does clear water look almost black in NIR and SWIR bands?</summary><p>Water absorbs nearly all incoming NIR and SWIR energy, so very little is reflected back to the sensor.</p></details>
 
+
+<div class="part-next"><a class="btn btn-primary" href="#resources">Next: Resources &rarr;</a></div>
+</div>
+<div class="part" data-part="resources">
 <h2 id="resources">Resources</h2>
 <ul>
   <li><a href="https://www.earthdata.nasa.gov/learn/backgrounders/remote-sensing">What is Remote Sensing?</a>, NASA Earthdata.</li>
@@ -221,6 +241,34 @@
   <li><a href="https://docs.qgis.org/latest/en/docs/training_manual/">QGIS Training Manual</a>, official QGIS documentation.</li>
 </ul>
 
+</div>
+<script>
+(function () {
+  var parts = [].slice.call(document.querySelectorAll('.part'));
+  var tiles = [].slice.call(document.querySelectorAll('.part-tile'));
+  var grid = document.querySelector('.part-grid');
+  if (!parts.length) return;
+  var ids = parts.map(function (p) { return p.getAttribute('data-part'); });
+  function show(id, scroll) {
+    if (ids.indexOf(id) < 0) id = ids[0];
+    parts.forEach(function (p) { p.hidden = p.getAttribute('data-part') !== id; });
+    tiles.forEach(function (t) { t.setAttribute('aria-current', t.getAttribute('data-part') === id ? 'true' : 'false'); });
+    if (scroll) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a) return;
+    var id = a.getAttribute('href').slice(1);
+    if (ids.indexOf(id) < 0) return;
+    e.preventDefault();
+    history.replaceState(null, '', '#' + id);
+    show(id, !a.classList.contains('part-tile'));
+  });
+  window.addEventListener('hashchange', function () { show(location.hash.slice(1), true); });
+  document.documentElement.classList.add('parts-on');
+  show(location.hash.slice(1), false);
+})();
+</script>
         <nav class="lesson-nav" aria-label="Lesson navigation"><a href="learning-remote-sensing.html">&larr; All lessons</a><a href="rs-week-02.html">Week 2: GIS fundamentals &rarr;</a></nav>
       </div>
     </section>

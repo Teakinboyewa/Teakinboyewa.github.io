@@ -46,8 +46,8 @@
     </section>
     <section class="section">
       <div class="container lesson">
-        <ul class="toc"><li><a href="#objectives">Objectives</a></li><li><a href="#notes">Lecture notes</a></li><li><a href="#terms">Key terms</a></li><li><a href="#lab">Lab</a></li><li><a href="#check">Check your understanding</a></li><li><a href="#resources">Resources</a></li></ul>
-
+        <nav class="part-grid" aria-label="Parts of this lesson"><a class="part-tile" href="#objectives" data-part="objectives"><span class="part-num">1</span><span class="part-title">Objectives</span><span class="part-meta">What you will learn &middot; 6 goals</span></a><a class="part-tile" href="#notes" data-part="notes"><span class="part-num">2</span><span class="part-title">Lecture notes</span><span class="part-meta">Read &middot; 8 topics</span></a><a class="part-tile" href="#terms" data-part="terms"><span class="part-num">3</span><span class="part-title">Key terms</span><span class="part-meta">Review &middot; 9 terms</span></a><a class="part-tile" href="#lab" data-part="lab"><span class="part-num">4</span><span class="part-title">Lab</span><span class="part-meta">Hands-on &middot; Lab 3</span></a><a class="part-tile" href="#check" data-part="check"><span class="part-num">5</span><span class="part-title">Check your understanding</span><span class="part-meta">Self-test &middot; 6 questions</span></a><a class="part-tile" href="#resources" data-part="resources"><span class="part-num">6</span><span class="part-title">Resources</span><span class="part-meta">Go further &middot; 5 links</span></a></nav>
+<div class="part" data-part="objectives">
 <h2 id="objectives">Learning objectives</h2>
 <p>By the end of this lesson, you will be able to:</p>
 <ul>
@@ -59,6 +59,10 @@
   <li>Stack bands, apply scale factors, and build band composites in QGIS.</li>
 </ul>
 
+
+<div class="part-next"><a class="btn btn-primary" href="#notes">Next: Lecture notes &rarr;</a></div>
+</div>
+<div class="part" data-part="notes">
 <h2 id="notes">Lecture notes</h2>
 
 <h3>1. The Landsat program</h3>
@@ -151,6 +155,10 @@
   </tbody>
 </table></div>
 
+
+<div class="part-next"><a class="btn btn-primary" href="#terms">Next: Key terms &rarr;</a></div>
+</div>
+<div class="part" data-part="terms">
 <h2 id="terms">Key terms</h2>
 <dl class="terms">
   <dt>OLI / TIRS</dt><dd>The Operational Land Imager and the Thermal Infrared Sensor on Landsat 8. Landsat 9 carries OLI-2 and TIRS-2.</dd>
@@ -164,6 +172,10 @@
   <dt>Layer stack</dt><dd>Several single-band images combined into one multiband image.</dd>
 </dl>
 
+
+<div class="part-next"><a class="btn btn-primary" href="#lab">Next: Lab &rarr;</a></div>
+</div>
+<div class="part" data-part="lab">
 <h2 id="lab">Lab 3: Download and prepare a Landsat 9 scene</h2>
 <p>In this lab, you download a real Landsat scene of your study area, prepare it in QGIS, and compare band combinations.</p>
 <div class="callout"><p><strong>You will need:</strong> QGIS, a free USGS account (register at <a href="https://ers.cr.usgs.gov/register">ers.cr.usgs.gov</a>), and about 1 GB of free disk space.</p></div>
@@ -221,6 +233,10 @@
   <li>Your QA_PIXEL screenshot, with a note on how much of your study area is covered by cloud.</li>
 </ul>
 
+
+<div class="part-next"><a class="btn btn-primary" href="#check">Next: Check your understanding &rarr;</a></div>
+</div>
+<div class="part" data-part="check">
 <h2 id="check">Check your understanding</h2>
 <details class="q"><summary>1. What do you learn from the scene ID LC08_L2SP_016032_20230715_20230725_02_T1?</summary><p>It is a Landsat 8 OLI/TIRS scene, processed to Level-2 surface reflectance and temperature, at WRS-2 path 16 and row 32. It was acquired on 15 July 2023, processed on 25 July 2023, belongs to Collection 2, and is Tier 1.</p></details>
 <details class="q"><summary>2. What is the difference between Level-1 and Level-2 products?</summary><p>Level-1 products are calibrated and georeferenced but still include the effects of the atmosphere. Level-2 products are corrected for the atmosphere and give surface reflectance and surface temperature, which you can compare across dates.</p></details>
@@ -229,6 +245,10 @@
 <details class="q"><summary>5. Why do Landsat 7 images after 2003 have stripes?</summary><p>Landsat 7's Scan Line Corrector failed in 2003. Without it, the sensor leaves wedge-shaped gaps in every image.</p></details>
 <details class="q"><summary>6. Which composite would you use to quickly map healthy forest, and why?</summary><p>Color infrared (bands 5, 4, 3). Healthy vegetation reflects strongly in the NIR, which this composite shows in red, so forests stand out in bright red.</p></details>
 
+
+<div class="part-next"><a class="btn btn-primary" href="#resources">Next: Resources &rarr;</a></div>
+</div>
+<div class="part" data-part="resources">
 <h2 id="resources">Resources</h2>
 <ul>
   <li><a href="https://landsat.gsfc.nasa.gov">Landsat Science</a>, NASA.</li>
@@ -238,6 +258,34 @@
   <li><a href="https://earthexplorer.usgs.gov">USGS EarthExplorer</a>, for searching and downloading Landsat data.</li>
 </ul>
 
+</div>
+<script>
+(function () {
+  var parts = [].slice.call(document.querySelectorAll('.part'));
+  var tiles = [].slice.call(document.querySelectorAll('.part-tile'));
+  var grid = document.querySelector('.part-grid');
+  if (!parts.length) return;
+  var ids = parts.map(function (p) { return p.getAttribute('data-part'); });
+  function show(id, scroll) {
+    if (ids.indexOf(id) < 0) id = ids[0];
+    parts.forEach(function (p) { p.hidden = p.getAttribute('data-part') !== id; });
+    tiles.forEach(function (t) { t.setAttribute('aria-current', t.getAttribute('data-part') === id ? 'true' : 'false'); });
+    if (scroll) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a) return;
+    var id = a.getAttribute('href').slice(1);
+    if (ids.indexOf(id) < 0) return;
+    e.preventDefault();
+    history.replaceState(null, '', '#' + id);
+    show(id, !a.classList.contains('part-tile'));
+  });
+  window.addEventListener('hashchange', function () { show(location.hash.slice(1), true); });
+  document.documentElement.classList.add('parts-on');
+  show(location.hash.slice(1), false);
+})();
+</script>
         <nav class="lesson-nav" aria-label="Lesson navigation"><a href="rs-week-02.html">&larr; Week 2: GIS fundamentals</a><span>Week 4: Sentinel-2 (coming soon)</span></nav>
       </div>
     </section>
