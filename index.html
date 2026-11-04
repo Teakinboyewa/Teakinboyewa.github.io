@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=2026-10-13">
+  <link rel="stylesheet" href="assets/css/style.css?v=2026-11-04k">
 </head>
 <body>
   <header class="site-header">
@@ -20,73 +20,40 @@
         <li><a href="research.html">Research</a></li>
         <li><a href="publications.html">Publications</a></li>
         <li><a href="awards.html">Awards</a></li>
-        <li><a href="presentations.html">Presentations</a></li>
+        <!-- <li><a href="presentations.html">Presentations</a></li> -->
         <li><a href="teaching.html">Teaching</a></li>
-        <li class="has-sub"><a href="learning.html">Learning</a>
+        <!-- <li class="has-sub"><a href="learning.html">Learning</a>
           <ul class="sub-menu">
             <li><a href="learning-gis.html">GIS</a></li>
             <li><a href="learning-remote-sensing.html">Remote Sensing</a></li>
             <li><a href="learning-geoai.html">GeoAI</a></li>
           </ul>
-        </li>
-        <li><a href="links.html">Links</a></li>
+        </li> -->
+        <!-- <li><a href="links.html">Links</a></li> -->
       </ul>
     </nav>
   </header>
 
   <main>
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <div class="eyebrow">Ph.D. Student &middot; Geography &middot; Penn State</div>
-          <h1>Temitope Akinboyewa</h1>
-          <p class="lead">I build AI agents that do geography. My research brings large language and multimodal models into GIS to automate spatial analysis, retrieve geospatial data, and help answer questions about human mobility, health, and environmental hazards.</p>
+    <section class="about">
+      <div class="container about-grid">
+        <aside class="about-side">
+          <div class="hero-photo">
+            <img src="assets/img/Temitope_Akinboyewa.jpg" alt="Portrait of Temitope Akinboyewa">
+          </div>
           <div class="btn-row">
             <a class="btn btn-primary" href="research.html">Explore my research</a>
             <a class="btn btn-outline" href="files/Akinboyewa_CV.pdf">Download CV</a>
           </div>
-        </div>
-        <div class="hero-photo">
-          <!-- Replace with your photo: put it at assets/img/profile.jpg -->
-          <img src="assets/img/profile.jpg" alt="Portrait of Temitope Akinboyewa"
-               onerror="this.outerHTML='&lt;div class=&quot;photo-placeholder&quot;&gt;TA&lt;/div&gt;'">
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container two-col">
-        <div>
-          <h2>About</h2>
+        </aside>
+        <div class="about-text">
+          <h1>About</h1>
           <hr class="rule">
-          <p>I am a Ph.D. student in the Department of Geography at The Pennsylvania State University, where I work as a Graduate Research and Teaching Assistant. I expect to graduate in Spring 2027.</p>
-          <p>My work sits where GeoAI meets autonomous GIS. I lead development of <a href="https://autonomousgis-agsi.github.io/AGSI/">GIS Co-Scientist</a>, a human-AI framework that forms hypotheses and runs spatial analyses, and of <a href="https://plugins.qgis.org/plugins/SpatialAnalysisAgent-master/">SpatialAnalysisAgent</a>, an AI agent plugin for QGIS. I also use big data on how people visit places to study neighborhood health.</p>
-          <p>Before Penn State, I earned an M.S. in Remote Sensing and GIS and a B.S. in Surveying and Geoinformatics from the Federal University of Technology, Akure, Nigeria. I also worked as a field surveyor and GIS analyst. In 2026 I was an AI Research Intern at bAI Labs.</p>
-        </div>
-        <div>
-          <h3 class="subhead">Research interests</h3>
-          <ul class="chips">
-            <li>GeoAI</li><li>Autonomous GIS</li><li>AI agents</li><li>Large multimodal models</li>
-            <li>Human mobility</li><li>Health geography</li><li>Flood mapping</li><li>Remote sensing</li>
-          </ul>
-          <h3 class="subhead">Education</h3>
-          <ul class="timeline">
-            <li><span class="year">2027</span><div><span class="what">Ph.D., Geography (expected)</span><span class="where">The Pennsylvania State University</span></div></li>
-            <li><span class="year">2023</span><div><span class="what">M.S., Remote Sensing and GIS</span><span class="where">Federal University of Technology, Akure, Nigeria</span></div></li>
-            <li><span class="year">2019</span><div><span class="what">B.S., Surveying and Geoinformatics</span><span class="where">Federal University of Technology, Akure, Nigeria</span></div></li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section alt">
-      <div class="container">
-        <div class="section-title"><h2>Highlights</h2><a href="publications.html">All publications &rarr;</a></div>
-        <div class="cards">
-          <div class="card"><span class="tag">Open-source tool</span><h3><a href="https://autonomousgis-agsi.github.io/AGSI/">GIS Co-Scientist</a></h3><p>A human-AI framework that forms hypotheses, designs workflows, and runs spatial analyses.</p></div>
-          <div class="card"><span class="tag">Publication &middot; 2025</span><h3><a href="https://doi.org/10.1080/17538947.2025.2497489">GIS Copilot</a></h3><p>An autonomous GIS agent for spatial analysis in QGIS, published in the <em>International Journal of Digital Earth</em>.</p></div>
-          <div class="card"><span class="tag">Award &middot; 2026</span><h3>Fox Scholar</h3><p>Fox Degree Completion Award from the Penn State Graduate School.</p></div>
-          <div class="card"><span class="tag">Award &middot; 2026</span><h3>1st Place Poster</h3><p>IndustryXchange 2026: Engineering Innovation with AI, Penn State.</p></div>
+          <p>I am a geographer interested in how generative AI can support spatial analysis and geographic inquiry, with applications in population health and natural hazards. My research spans GeoAI, autonomous GIS, human mobility, health geography, and disaster assessment. I am currently a Ph.D. student in the Department of Geography at The Pennsylvania State University, where I work as a Graduate Research and Teaching Assistant, and I expect to graduate in Spring 2027.</p>
+          <p>A major part of my research asks whether AI can take part in geographic inquiry rather than simply carry out GIS tasks. Sound spatial analysis depends on careful choices about data, scale, spatial dependence, and context, and the expertise this demands keeps it out of reach for many who need it. I have explored this question through <a href="https://doi.org/10.1080/17538947.2025.2497489">GIS Copilot</a>, which lets people run spatial analyses in natural language within an established GIS platform, and <a href="https://autonomousgis-agsi.github.io/AGSI/">GIS Co-Scientist</a>, a human-AI framework that carries out inquiries from research question to draft manuscript, with human checkpoints where geographic judgment most affects inference. Independent expert review of GIS Co-Scientist revealed a key insight: a workflow can run successfully and still be geographically wrong.</p>
+          <p>Much of my applied research uses large-scale smartphone-based visitation data to understand how people interact with places in their everyday lives, which conventional neighborhood measures based on where people live do not capture. I have used these data to examine coronary heart disease across U.S. neighborhoods, to estimate tract-level health measures, and to study how food visits changed during the COVID-19 pandemic across communities with varying income levels and racial composition. In natural hazards, I have used a large multimodal model to estimate floodwater depth from flood photographs without task-specific training.</p>
+          <p>Looking forward, I am particularly interested in trustworthy GeoAI: methods that account for scale, spatial dependence, and context, check claims against evidence, quantify uncertainty, and recognize when human judgment is needed. I also plan to study how people's daily activities shape their environmental exposure and health, and how photos, videos, and posts shared by residents can support disaster response and recovery. I welcome opportunities for collaboration and conversation around these topics.</p>
+          <p>My background is in surveying and remote sensing. I earned a B.S. in Surveying and Geoinformatics and an M.S. in Remote Sensing and GIS from the Federal University of Technology, Akure, Nigeria, and worked as a field surveyor and GIS analyst before coming to Penn State. In 2026 I was an AI Research Intern at bAI Labs.</p>
         </div>
       </div>
     </section>

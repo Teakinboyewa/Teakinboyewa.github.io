@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=2026-10-13">
+  <link rel="stylesheet" href="assets/css/style.css?v=2026-11-04k">
 </head>
 <body>
   <header class="site-header">
@@ -20,36 +20,31 @@
         <li><a href="research.html" aria-current="page">Research</a></li>
         <li><a href="publications.html">Publications</a></li>
         <li><a href="awards.html">Awards</a></li>
-        <li><a href="presentations.html">Presentations</a></li>
+        <!-- <li><a href="presentations.html">Presentations</a></li> -->
         <li><a href="teaching.html">Teaching</a></li>
-        <li class="has-sub"><a href="learning.html">Learning</a>
+        <!-- <li class="has-sub"><a href="learning.html">Learning</a>
           <ul class="sub-menu">
             <li><a href="learning-gis.html">GIS</a></li>
             <li><a href="learning-remote-sensing.html">Remote Sensing</a></li>
             <li><a href="learning-geoai.html">GeoAI</a></li>
           </ul>
-        </li>
-        <li><a href="links.html">Links</a></li>
+        </li> -->
+        <!-- <li><a href="links.html">Links</a></li> -->
       </ul>
     </nav>
   </header>
 
   <main>
-    <section class="page-head">
-      <div class="container">
-        <h1>Research</h1>
-        <p>I study how AI agents can carry out geographic research, and how big geospatial data can help explain health and environmental outcomes.</p>
-      </div>
-    </section>
     <section class="section">
       <div class="container">
-        <div class="cards">
-          <div class="card"><span class="tag">Theme 1</span><h3>Autonomous GIS &amp; AI agents</h3>
-            <p>Building LLM-powered agents that plan and run spatial analyses, find and retrieve geospatial data, and work with researchers to answer geographic questions.</p></div>
-          <div class="card"><span class="tag">Theme 2</span><h3>Human mobility &amp; health</h3>
-            <p>Using smartphone-based place-visitation data to estimate small-area health measures, such as coronary heart disease and dietary behavior, across U.S. neighborhoods.</p></div>
-          <div class="card"><span class="tag">Theme 3</span><h3>GeoAI for hazards</h3>
-            <p>Applying large multimodal models and data fusion to estimate floodwater depth quickly and to map floods.</p></div>
+        <!-- Card images: replace assets/img/research-theme-1.jpg, -2.jpg, -3.jpg (same names, wide 16:9 images about 1200px across) and update each alt text. -->
+        <div class="cards research-cards">
+          <div class="card"><a href="research-autonomous-gis.html"><img class="card-cover" src="assets/img/research-theme-1.jpg" alt="Illustration of two robots studying a holographic globe and terrain map"></a><h3><a href="research-autonomous-gis.html">Autonomous GIS &amp; AI agents</a></h3>
+            <p>Examining how AI agents can support spatial analysis, data retrieval, and scientific inquiry, with human judgment where geographic decisions matter most.</p><p class="card-more"><a href="research-autonomous-gis.html">Explore this research &rarr;</a></p></div>
+          <div class="card"><a href="research-mobility-health.html"><img class="card-cover" src="assets/img/research-theme-2.jpg" alt="Illustration of mobility flows between census tracts and places in a city, linked to a map of tract-level coronary heart disease prevalence"></a><h3><a href="research-mobility-health.html">Human mobility &amp; health</a></h3>
+            <p>Using large-scale smartphone visitation data to measure how people interact with places in everyday life, offering a scalable way to assess neighborhood health and inform equity-focused public health planning.</p><p class="card-more"><a href="research-mobility-health.html">Explore this research &rarr;</a></p></div>
+          <div class="card"><a href="research-hazards.html"><img class="card-cover" src="assets/img/research-theme-3.jpg" alt="Illustration of a flooded residential street with floodwater depth estimates marked against a car tire and a sign post"></a><h3><a href="research-hazards.html">GeoAI for hazards</a></h3>
+            <p>Using a large multimodal model to estimate floodwater depth from flood photographs without task-specific training, supporting timely information on where hazards occur and how severe they are.</p><p class="card-more"><a href="research-hazards.html">Explore this research &rarr;</a></p></div>
         </div>
       </div>
     </section>

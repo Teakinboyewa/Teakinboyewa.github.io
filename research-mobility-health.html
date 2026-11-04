@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Human Mobility &amp; Health | Temitope Akinboyewa</title>
+  <meta name="description" content="Research by Temitope Akinboyewa on how the places people visit in everyday life can help us understand and measure population health.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=2026-11-04k">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="container nav" aria-label="Main">
+      <a class="brand" href="index.html">Temitope Akinboyewa</a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" onclick="var l=document.getElementById('nav-links');l.classList.toggle('open');this.setAttribute('aria-expanded',l.classList.contains('open'))">&#9776;</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="research.html" aria-current="page">Research</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="awards.html">Awards</a></li>
+        <!-- <li><a href="presentations.html">Presentations</a></li> -->
+        <li><a href="teaching.html">Teaching</a></li>
+        <!-- <li class="has-sub"><a href="learning.html">Learning</a>
+          <ul class="sub-menu">
+            <li><a href="learning-gis.html">GIS</a></li>
+            <li><a href="learning-remote-sensing.html">Remote Sensing</a></li>
+            <li><a href="learning-geoai.html">GeoAI</a></li>
+          </ul>
+        </li> -->
+        <!-- <li><a href="links.html">Links</a></li> -->
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-head">
+      <div class="container">
+        <div class="crumbs"><a href="research.html">Research</a> &rsaquo; Human mobility &amp; health</div>
+        <h1>Human mobility &amp; health</h1>
+        <p>How the places people visit in everyday life can help us understand and measure population health across communities.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="study-layout">
+          <nav class="study-list" aria-label="Sections of this page">
+            <ul>
+              <li><a href="#overview"><span class="study-name">Overview</span></a></li>
+              <li class="study-group">Featured studies</li>
+              <li><a href="#study-health-measures"><span class="study-name">Place visitation and 22 health measures</span><span class="study-venue">Computational Urban Science, 2026</span></a></li>
+              <li><a href="#study-chd"><span class="study-name">Place visitation and coronary heart disease</span><span class="study-venue">PLOS One, 2025</span></a></li>
+              <li class="study-group">More</li>
+              <li><a href="#related-work"><span class="study-name">Related work</span></a></li>
+            </ul>
+          </nav>
+          <div class="study-panels">
+            <article class="study-panel" id="overview">
+              <h3 class="study-title">Overview</h3>
+              <div class="prose">
+                <p>Where people live tells only part of the story of their health. Demographic and social determinants capture long-term neighborhood conditions, but they do not reflect where residents go, what services they use, or how they interact with their surroundings. Surveys can capture these behaviors, but they are costly, slow, and difficult to carry out in fine spatial detail across large regions.</p>
+                <p>Large-scale, anonymized smartphone data make it possible to observe aggregated visits to places such as food outlets, parks, fitness centers, and clinics. My research asks how these patterns can complement established health measures, how the relationships differ across places and communities, and how far such data can be relied on. These questions extend from chronic disease and health behaviors to how disruptions reshape daily life and environmental exposure.</p>
+                <h4 class="subhead">Research directions</h4>
+                <ul>
+                  <li><strong>Behavioral measures of health:</strong> deriving measures of routine activity from place visitation data that complement demographic and social determinants of health.</li>
+                  <li><strong>Geographic and social differences:</strong> examining how these relationships vary between urban and rural areas and across communities with different income levels and racial composition.</li>
+                  <li><strong>Activity-based exposure:</strong> going forward, linking nationwide mobility data with environmental observations to measure how disruptions reshape activity patterns and cumulative exposure, and how those exposures relate to health and vulnerability.</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="study-panel" id="study-health-measures">
+        <div class="prose">
+          <h3 class="study-title">Place visitation and 22 health measures</h3>
+          <p>Demographic and social determinants of health are widely used to estimate small-area health measures, but they are often static and do not reflect daily routines. Most earlier visitation studies also focused on a single health condition. We asked whether routine activity information from place visitation data improves estimates across many health measures at the census tract level, and whether the gains differ between urban and rural communities.</p>
+          <h4 class="subhead">Approach</h4>
+          <p>We compared XGBoost models with and without place visitation data across 69,424 census tracts, using 5-fold cross-validation. Baseline models used 12 demographic and social determinant variables from the 2019 American Community Survey, and the comparison models added visits to 120 categories of places from 2019 SafeGraph Patterns data. The outcomes were 22 CDC PLACES measures covering health conditions, behaviors, and preventive care.</p>
+          <h4 class="subhead">What we found</h4>
+          <ul>
+            <li><strong>Overall gain:</strong> adding visitation data raised the mean R&sup2; across the 22 measures from 0.814 to 0.875, a 7.5% improvement.</li>
+            <li><strong>Urban and rural differences:</strong> the mean improvement was 7.6% in urban tracts and 12.5% in rural tracts.</li>
+            <li><strong>Largest gains:</strong> nationally, binge drinking improved most (R&sup2; from 0.552 to 0.756), followed by routine checkups and depression. In rural tracts, the gains reached 48.9% for depression and 44.5% for binge drinking.</li>
+            <li><strong>Less clustered errors:</strong> prediction errors became less spatially clustered. For binge drinking in urban tracts, Moran's I of the residuals fell from 0.672 to 0.358.</li>
+          </ul>
+        </div>
+        <figure class="paper-figure">
+          <img src="assets/img/mobility-health-urban-rural.jpg" alt="Bar chart of percentage improvement for 22 health measures in urban and rural census tracts, led by binge drinking, routine checkups, and depression, with larger gains in rural tracts for most measures">
+          <figcaption>Improvement in predictive performance for each health measure after adding place visitation data, in urban and rural census tracts. Figure 1 from Akinboyewa et al. (2026), licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a>.</figcaption>
+        </figure>
+        <div class="prose">
+          <h4 class="subhead">Limits and next steps</h4>
+          <p>These are gains in predictive accuracy at the census tract level. They are not causal effects, and they do not describe individual behavior. The smartphone panel also does not sample residents uniformly, so the results describe patterns in the device-bearing population rather than all residents. Whether the gains hold at other spatial scales, and what mechanisms lie behind them, requires further study.</p>
+          <p class="citation">Akinboyewa, T., Ning, H., Li, Z., Lessani, M. N., Li, X., &amp; Qiao, S. (2026). Exploring the role of place visitation big data on small area health measure estimation. <em>Computational Urban Science</em>, 6(1), 52. <a href="https://doi.org/10.1007/s43762-026-00287-0">Read the paper &rarr;</a></p>
+        </div>
+            </article>
+
+            <article class="study-panel" id="study-chd">
+        <div class="prose">
+          <h3 class="study-title">Place visitation and coronary heart disease</h3>
+          <p>Behaviors linked to coronary heart disease, such as diet, physical activity, smoking, and alcohol use, are usually measured through surveys, which are resource-intensive and limited in scale. We examined whether visits to relevant places could serve as proxy measures of these behaviors at the neighborhood level across the United States.</p>
+          <h4 class="subhead">Approach</h4>
+          <p>We grouped 2019 visits into five categories: physical activity facilities, healthy food retail, less healthy food retail, drinking places, and smoking places. We then compared how well demographic and socioeconomic variables explained coronary heart disease prevalence with and without these visitation measures, using linear regression and spatial error models that account for spatial dependence.</p>
+          <h4 class="subhead">What we found</h4>
+          <ul>
+            <li><strong>Associations:</strong> more visits to physical activity facilities and healthy food retail were associated with lower prevalence, while more visits to less healthy food retail were associated with higher prevalence.</li>
+            <li><strong>Model fit:</strong> adding visitation measures raised the adjusted R&sup2; from 0.710 to 0.730 and lowered AIC and BIC. Demographic and socioeconomic characteristics remained the primary factors.</li>
+            <li><strong>An unexpected result:</strong> more visits to drinking places were associated with lower prevalence, which may partly reflect confounding by age.</li>
+            <li><strong>Geographic patterns:</strong> coronary heart disease prevalence (Moran's I = 0.38) and visitation to all five categories were significantly clustered in space.</li>
+          </ul>
+        </div>
+        <figure class="paper-figure">
+          <img src="assets/img/mobility-health-visitation-maps.jpg" alt="Five maps of the contiguous United States showing census tract visitation rates to healthy food retail, less healthy food retail, physical activity facilities, drinking places, and smoking places">
+          <figcaption>Place visitation rates at the census tract level for the five behavior categories. Figure 3 from Akinboyewa et al. (2025), licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</figcaption>
+        </figure>
+        <div class="prose">
+          <h4 class="subhead">Limits and next steps</h4>
+          <p>These are neighborhood-level associations. The study could not fully account for broader environmental and social factors, such as access to health-promoting amenities, or capture visitation by age group. Future work can address these factors and examine how visitation patterns changed across phases of the COVID-19 pandemic.</p>
+          <p class="citation">Akinboyewa, T., Li, Z., Ning, H., Lessani, M. N., Holmes, L. M., &amp; Qiao, S. (2025). Exploring the association between smartphone-based place visitation data and neighborhood-level coronary heart disease in the United States. <em>PLOS One</em>, 20(8), e0329455. <a href="https://doi.org/10.1371/journal.pone.0329455">Read the paper &rarr;</a></p>
+        </div>
+            </article>
+
+            <article class="study-panel" id="related-work">
+              <h3 class="study-title">Related work</h3>
+              <ul class="entries">
+          <li><span class="entry-title">Examining differences in COVID-19 impact on dietary behavior across the United States using cellphone-based place visitation data<span class="badge">Under review</span></span>
+            <div class="entry-meta"><strong>Akinboyewa, T.</strong>, Li, Z., Qiao, S., Holmes, L. M., Yu, M., &amp; Kaczynski, A. T.</div></li>
+          <li><span class="entry-title">Place-based Representation Bias in Human Mobility Data: Assessing POI Coverage, Category Bias, and Visitor Representation Bias<span class="badge">Preprint</span></span>
+            <div class="entry-meta">Lessani, M. N., Li, Z., <strong>Akinboyewa, T.</strong>, &amp; Jing, F. (2026). SSRN.</div>
+            <div class="entry-links"><a href="https://doi.org/10.2139/ssrn.7314098">Read preprint &rarr;</a></div></li>
+          <li><span class="entry-title">Unequal Adaptation: Threshold Effects of Micromobility Substitution under Extreme Heat in New York City<span class="badge">Under review</span></span>
+            <div class="entry-meta">Lim, S., Khosravi Kazazi, A., <strong>Akinboyewa, T.</strong>, &amp; Li, Z.</div></li>
+          <li><span class="entry-title">Integrative Approaches to Understanding Human Mobility and Health Outcomes<span class="badge">Session chair</span></span>
+            <div class="entry-meta">American Association of Geographers Annual Meetings, 2024, 2025, and 2026 (co-organizer in 2024 and 2025).</div></li>
+        </ul>
+        <p class="citation">Both featured studies were supported in part by the National Institutes of Health under Award Number R21MD018666. The content is solely the responsibility of the authors and does not necessarily represent the official views of the National Institutes of Health.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <strong>Temitope Akinboyewa</strong>
+          Department of Geography<br>
+          The Pennsylvania State University, University Park, PA<br>
+          <a href="mailto:tea5209@psu.edu">tea5209@psu.edu</a>
+        </div>
+        <div class="footer-links">
+          <a href="https://scholar.google.com/citations?user=yQsUY8MAAAAJ&hl=en">Google Scholar</a>
+          <a href="https://www.researchgate.net/profile/Temitope-Akinboyewa">ResearchGate</a>
+          <a href="https://github.com/Teakinboyewa">GitHub</a>
+          <a href="files/Akinboyewa_CV.pdf">CV</a>
+        </div>
+      </div>
+      <div class="copyright">&copy; 2026 Temitope Akinboyewa</div>
+    </div>
+  </footer>
+  <script>
+    (function () {
+      var links = document.querySelectorAll('.study-list a');
+      var panels = document.querySelectorAll('.study-panel');
+      function show(id) {
+        panels.forEach(function (p) { p.hidden = p.id !== id; });
+        links.forEach(function (a) {
+          if (a.getAttribute('href') === '#' + id) { a.setAttribute('aria-current', 'true'); }
+          else { a.removeAttribute('aria-current'); }
+        });
+      }
+      links.forEach(function (a) {
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          var id = a.getAttribute('href').slice(1);
+          show(id);
+          var top = document.querySelector('.study-layout').getBoundingClientRect().top;
+          if (top < 0) { window.scrollBy(0, top - 100); }
+          history.replaceState(null, '', '#' + id);
+        });
+      });
+      var wanted = location.hash.slice(1);
+      show(document.getElementById(wanted) && document.getElementById(wanted).classList.contains('study-panel') ? wanted : panels[0].id);
+    })();
+  </script>
+</body>
+</html>

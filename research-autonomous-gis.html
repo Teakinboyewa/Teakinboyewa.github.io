@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Autonomous GIS &amp; AI Agents | Temitope Akinboyewa</title>
+  <meta name="description" content="Research by Temitope Akinboyewa on how generative AI can support spatial analysis and geographic inquiry in scientifically defensible ways.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=2026-11-04k">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="container nav" aria-label="Main">
+      <a class="brand" href="index.html">Temitope Akinboyewa</a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" onclick="var l=document.getElementById('nav-links');l.classList.toggle('open');this.setAttribute('aria-expanded',l.classList.contains('open'))">&#9776;</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="research.html" aria-current="page">Research</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="awards.html">Awards</a></li>
+        <!-- <li><a href="presentations.html">Presentations</a></li> -->
+        <li><a href="teaching.html">Teaching</a></li>
+        <!-- <li class="has-sub"><a href="learning.html">Learning</a>
+          <ul class="sub-menu">
+            <li><a href="learning-gis.html">GIS</a></li>
+            <li><a href="learning-remote-sensing.html">Remote Sensing</a></li>
+            <li><a href="learning-geoai.html">GeoAI</a></li>
+          </ul>
+        </li> -->
+        <!-- <li><a href="links.html">Links</a></li> -->
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-head">
+      <div class="container">
+        <div class="crumbs"><a href="research.html">Research</a> &rsaquo; Autonomous GIS &amp; AI agents</div>
+        <h1>Autonomous GIS &amp; AI agents</h1>
+        <p>How generative AI can support spatial analysis and geographic inquiry, and what it takes for AI-assisted geographic research to be scientifically defensible.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="study-layout">
+          <nav class="study-list" aria-label="Sections of this page">
+            <ul>
+              <li><a href="#overview"><span class="study-name">Overview</span></a></li>
+              <li class="study-group">Featured studies</li>
+              <li><a href="#study-copilot"><span class="study-name">GIS Copilot</span><span class="study-venue">International Journal of Digital Earth, 2025</span></a></li>
+              <li><a href="#study-coscientist"><span class="study-name">GIS Co-Scientist</span><span class="study-venue">Under review, 2026</span></a></li>
+              <li><a href="#study-onboarding"><span class="study-name">Geospatial data source onboarding</span><span class="study-venue">Preprint, 2026</span></a></li>
+              <li class="study-group">More</li>
+              <li><a href="#related-work"><span class="study-name">Related work</span></a></li>
+            </ul>
+          </nav>
+          <div class="study-panels">
+            <article class="study-panel" id="overview">
+              <h3 class="study-title">Overview</h3>
+              <div class="prose">
+                <p>Geographic research requires finding suitable data, chaining GIS tools, and making defensible choices about scale, spatial dependence, and context. The expertise this demands keeps advanced spatial analysis out of reach for many who need it. Large language models can now reason about tasks and write code from natural language, but on their own they lack much of the geographic knowledge and data access that rigorous work requires.</p>
+                <p>My research asks how AI agents can take part in this work, from running analyses within established GIS platforms, to acquiring the data sources they need, to supporting scientific inquiry alongside human researchers. A recurring finding is that completing a workflow is not the same as getting the geography right, so human judgment, verification, and transparent records are central to this research.</p>
+                <h4 class="subhead">Research directions</h4>
+                <ul>
+                  <li><strong>Geographic scientific reasoning:</strong> designing analyses that account for scale, spatial dependence, and context.</li>
+                  <li><strong>Evidence-driven refinement:</strong> testing robustness and revising hypotheses when evidence conflicts.</li>
+                  <li><strong>Verification and calibrated autonomy:</strong> checking claims against evidence, quantifying uncertainty, and deciding when to request human judgment.</li>
+                  <li><strong>Self-improving agents:</strong> extending data source onboarding with reinforcement learning that rewards verified and scientifically valid results.</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="study-panel" id="study-copilot">
+              <h3 class="study-title">GIS Copilot: spatial analysis within a GIS platform</h3>
+              <div class="prose">
+                <p>Large language models can write geospatial code, but they had not been deeply embedded in established GIS platforms, where an agent must choose among many tools and set their parameters correctly. We asked how this integration could work, using QGIS as a case study.</p>
+                <h4 class="subhead">Approach</h4>
+                <p>GIS Copilot lets people request spatial analyses in natural language within QGIS. It draws on structured documentation of 390 QGIS and GDAL tools, inspects the input data, and reviews and corrects its own code when errors occur, while showing users its reasoning and code. We evaluated it on 110 tasks at three levels of complexity.</p>
+                <h4 class="subhead">What we found</h4>
+                <ul>
+                  <li><strong>Basic tasks:</strong> 92% of 60 single-step tasks succeeded within three attempts.</li>
+                  <li><strong>Intermediate tasks:</strong> 83% of 30 multistep tasks succeeded when the steps were described.</li>
+                  <li><strong>Advanced tasks:</strong> 75% of 20 multistep tasks succeeded when only the goal was given.</li>
+                  <li><strong>Sources of failure:</strong> tool selection was generally accurate. Most failures came from incorrect parameters, mismatched field names in data joins, and omitted reprojection.</li>
+                </ul>
+              </div>
+              <figure class="paper-figure">
+                <img src="assets/img/autonomous-gis-copilot-framework.jpg" alt="Diagram of the GIS Copilot framework, in which users work with supporting modules for query refining, tool retrieval, data understanding, and code review to use built-in and external GIS tools for vector, raster, and overlay analysis">
+                <figcaption>Framework of the GIS Copilot. Figure 1 from Akinboyewa et al. (2025), licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</figcaption>
+              </figure>
+              <div class="prose">
+                <h4 class="subhead">Limits and next steps</h4>
+                <p>Full autonomy was not achieved, especially when only the goal was specified. The omitted reprojection steps point to limited foundational GIScience knowledge in the underlying models. Suggested next steps include validating data against tool requirements, learning from documented errors, and connecting analysis with data retrieval.</p>
+                <p class="citation">Akinboyewa, T., Li, Z., Ning, H., &amp; Lessani, M. N. (2025). GIS Copilot: Towards an autonomous GIS agent for spatial analysis. <em>International Journal of Digital Earth</em>, 18(1), 2497489. <a href="https://doi.org/10.1080/17538947.2025.2497489">Read the paper &rarr;</a></p>
+              </div>
+            </article>
+
+            <article class="study-panel" id="study-coscientist">
+              <h3 class="study-title">GIS Co-Scientist: human-AI geospatial inquiry</h3>
+              <div class="prose">
+                <p>Most autonomous GIS research focuses on executing analyses, leaving question framing, hypotheses, and evidence evaluation to human investigators. We asked whether autonomous GIS could support these broader stages of geospatial scientific inquiry, with geographic judgment kept in human hands.</p>
+                <h4 class="subhead">Approach</h4>
+                <p>We proposed a framework in which six specialized agents handle question understanding, data retrieval, planning, spatial modeling, result analysis, and reporting. A human chief investigator reviews the work at checkpoints where geographic judgment most affects inference, and a reproducibility layer records every step. We demonstrated the framework on three case studies: air pollution and income inequality in California; mobility, socioeconomic status, and depression in South Carolina; and proximity to hazardous waste facilities and asthma in North Carolina. Three GIS experts then independently reviewed the unedited manuscripts.</p>
+                <h4 class="subhead">What we found</h4>
+                <ul>
+                  <li><strong>End-to-end inquiry:</strong> each case moved from a research question to a draft manuscript with a traceable record, in about 22 to 34 minutes.</li>
+                  <li><strong>The value of planning:</strong> without the planning stage, spatial analyses were omitted in two of the three cases.</li>
+                  <li><strong>A key insight:</strong> a workflow can run successfully and still be geographically wrong. In one repeated run, distances calculated in geographic coordinates were labeled as meters without causing any execution error.</li>
+                  <li><strong>Expert review:</strong> evaluators identified gaps in methods documentation, geographic specification, statistical support, and citations. All three recommended substantial revision or reanalysis for one case, and two of the three recommended substantial revision for the other two.</li>
+                </ul>
+              </div>
+              <figure class="paper-figure">
+                <img src="assets/img/autonomous-gis-coscientist-framework.jpg" alt="Diagram of the autonomous geospatial scientific inquiry framework, showing a human chief investigator, six specialized agents from research question understanding to reporting, and a reproducibility layer">
+                <figcaption>The autonomous geospatial scientific inquiry framework. Figure 1 from Akinboyewa &amp; Li (2026), preprint.</figcaption>
+              </figure>
+              <div class="prose">
+                <h4 class="subhead">Limits and next steps</h4>
+                <p>The system supports first-draft reporting, not publication-ready manuscripts, and expert verification remains essential. It accepted the spatial units in its datasets without questioning them and did not independently recognize when non-stationary modeling was needed. The evaluation also covered only three cases and did not compare outputs with those of human researchers. Future work includes geography-aware reasoning that evaluates scale, coordinate systems, and spatial dependence before models run.</p>
+                <p class="citation">Akinboyewa, T., &amp; Li, Z. (2026). GIS Co-Scientist: A human-AI collaborative framework for autonomous geospatial scientific inquiry. Under review. <a href="https://dx.doi.org/10.2139/ssrn.6753098">Read the preprint &rarr;</a> <a href="https://autonomousgis-agsi.github.io/AGSI/">Case study materials &rarr;</a></p>
+              </div>
+            </article>
+
+            <article class="study-panel" id="study-onboarding">
+              <h3 class="study-title">Geospatial data source onboarding</h3>
+              <div class="prose">
+                <p>GIS agents often know which source holds the data they need but not how to retrieve it. Existing approaches rely on source-specific guides that are written and tested by hand, which can take several hours per source. We asked whether agents could acquire and retain this knowledge themselves, a step toward self-growing autonomous GIS.</p>
+                <h4 class="subhead">Approach</h4>
+                <p>The framework starts from a source name or documentation link. It gathers the source's documentation, organizes it into a handbook, tests that handbook against the live service, refines it through real retrieval tasks, and keeps it for reuse. We evaluated it on 45 retrieval tasks across five data access mechanisms with and without handbooks, 15 tasks from an earlier benchmark, and five end-to-end spatial analyses.</p>
+                <h4 class="subhead">What we found</h4>
+                <ul>
+                  <li><strong>Retrieval:</strong> verified completion rose from 28.9% to 77.8% of the 45 tasks, and tasks with no usable output fell from 48.9% to 4.4%.</li>
+                  <li><strong>Across access mechanisms:</strong> completion improved for all five. File-download repositories improved most, from 0% to 77.8%, while STAC catalogs remained the most challenging at 55.6%.</li>
+                  <li><strong>Benchmark:</strong> automatically generated handbooks supported 13 of the 15 tasks, at an average of about 3 minutes per handbook.</li>
+                  <li><strong>End-to-end analysis:</strong> the required data were retrieved for all five analyses, although some needed repair or a rerun. Two analyses then had problems unrelated to data retrieval.</li>
+                </ul>
+              </div>
+              <figure class="paper-figure">
+                <img src="assets/img/autonomous-gis-onboarding-results.jpg" alt="Bar chart of task completion with and without generated handbooks: REST APIs 44 to 100 percent, STAC catalogs 22 to 56 percent, OGC services 33 to 89 percent, HTTP file download 0 to 78 percent, ArcGIS FeatureServer 44 to 67 percent">
+                <figcaption>Verified retrieval completion with and without automatically generated handbooks across five data access mechanisms. Figure 4 from Akinboyewa &amp; Li (2026), preprint.</figcaption>
+              </figure>
+              <div class="prose">
+                <h4 class="subhead">Limits and next steps</h4>
+                <p>The framework gives stronger evidence that a retrieval runs than that it returns the right data. In one case, a valid file contained the wrong product. The evaluation also covered a limited set of providers. Future work includes checking returned data against task requirements and addressing licensing, provenance, and trust in documentation.</p>
+                <p class="citation">Akinboyewa, T., &amp; Li, Z. (2026). Toward self-growing data retrieval capabilities in autonomous GIS: A framework for geospatial data source onboarding. Preprint, SSRN. <a href="https://doi.org/10.2139/ssrn.7527681">Read the preprint &rarr;</a></p>
+              </div>
+            </article>
+
+            <article class="study-panel" id="related-work">
+              <h3 class="study-title">Related work</h3>
+              <ul class="entries">
+                <li><span class="entry-title">GeoAI and AI Copilot<span class="badge">Encyclopedia entry</span></span>
+                  <div class="entry-meta"><strong>Akinboyewa, T.</strong>, &amp; Li, Z. (2026). In D. Richardson et al. (Eds.), <em>International Encyclopedia of Geography</em> (1st ed., pp. 1&ndash;8). Wiley.</div>
+                  <div class="entry-links"><a href="https://doi.org/10.1002/9781118786352.wbieg2254">Read &rarr;</a></div></li>
+                <li><span class="entry-title">Towards Autonomous Geospatial Scientific Inquiry: An AI Co-Scientist Framework for Geographic Knowledge Discovery<span class="badge">1st Place Poster</span></span>
+                  <div class="entry-meta">IndustryXchange 2026: Engineering Innovation with AI, Pennsylvania State University.</div></li>
+                <li><span class="entry-title">Autonomous Geospatial Modeling: Towards Geographic Discovery<span class="badge">Presentation</span></span>
+                  <div class="entry-meta">American Association of Geographers Annual Meeting, San Francisco, CA, 2026.</div></li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <strong>Temitope Akinboyewa</strong>
+          Department of Geography<br>
+          The Pennsylvania State University, University Park, PA<br>
+          <a href="mailto:tea5209@psu.edu">tea5209@psu.edu</a>
+        </div>
+        <div class="footer-links">
+          <a href="https://scholar.google.com/citations?user=yQsUY8MAAAAJ&hl=en">Google Scholar</a>
+          <a href="https://www.researchgate.net/profile/Temitope-Akinboyewa">ResearchGate</a>
+          <a href="https://github.com/Teakinboyewa">GitHub</a>
+          <a href="files/Akinboyewa_CV.pdf">CV</a>
+        </div>
+      </div>
+      <div class="copyright">&copy; 2026 Temitope Akinboyewa</div>
+    </div>
+  </footer>
+  <script>
+    (function () {
+      var links = document.querySelectorAll('.study-list a');
+      var panels = document.querySelectorAll('.study-panel');
+      function show(id) {
+        panels.forEach(function (p) { p.hidden = p.id !== id; });
+        links.forEach(function (a) {
+          if (a.getAttribute('href') === '#' + id) { a.setAttribute('aria-current', 'true'); }
+          else { a.removeAttribute('aria-current'); }
+        });
+      }
+      links.forEach(function (a) {
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          var id = a.getAttribute('href').slice(1);
+          show(id);
+          var top = document.querySelector('.study-layout').getBoundingClientRect().top;
+          if (top < 0) { window.scrollBy(0, top - 100); }
+          history.replaceState(null, '', '#' + id);
+        });
+      });
+      var wanted = location.hash.slice(1);
+      show(document.getElementById(wanted) && document.getElementById(wanted).classList.contains('study-panel') ? wanted : panels[0].id);
+    })();
+  </script>
+</body>
+</html>

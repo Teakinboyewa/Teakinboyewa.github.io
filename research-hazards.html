@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GeoAI for Hazards | Temitope Akinboyewa</title>
+  <meta name="description" content="Research by Temitope Akinboyewa on how geospatial AI can provide timely, reliable information about environmental and natural hazards.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=2026-11-04k">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="container nav" aria-label="Main">
+      <a class="brand" href="index.html">Temitope Akinboyewa</a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" onclick="var l=document.getElementById('nav-links');l.classList.toggle('open');this.setAttribute('aria-expanded',l.classList.contains('open'))">&#9776;</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="research.html" aria-current="page">Research</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="awards.html">Awards</a></li>
+        <!-- <li><a href="presentations.html">Presentations</a></li> -->
+        <li><a href="teaching.html">Teaching</a></li>
+        <!-- <li class="has-sub"><a href="learning.html">Learning</a>
+          <ul class="sub-menu">
+            <li><a href="learning-gis.html">GIS</a></li>
+            <li><a href="learning-remote-sensing.html">Remote Sensing</a></li>
+            <li><a href="learning-geoai.html">GeoAI</a></li>
+          </ul>
+        </li> -->
+        <!-- <li><a href="links.html">Links</a></li> -->
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-head">
+      <div class="container">
+        <div class="crumbs"><a href="research.html">Research</a> &rsaquo; GeoAI for hazards</div>
+        <h1>GeoAI for hazards</h1>
+        <p>How geospatial AI can provide timely, reliable information about where environmental and natural hazards occur, how severe they are, and what affected communities need.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="study-layout">
+          <nav class="study-list" aria-label="Sections of this page">
+            <ul>
+              <li><a href="#overview"><span class="study-name">Overview</span></a></li>
+              <li class="study-group">Featured study</li>
+              <li><a href="#study-floodwater"><span class="study-name">Floodwater depth from photographs</span><span class="study-venue">Computational Urban Science, 2024</span></a></li>
+              <li class="study-group">More</li>
+              <li><a href="#related-work"><span class="study-name">Related work</span></a></li>
+            </ul>
+          </nav>
+          <div class="study-panels">
+            <article class="study-panel" id="overview">
+              <h3 class="study-title">Overview</h3>
+              <div class="prose">
+                <p>Disaster preparedness, response, and recovery depend on timely information about where hazards strike and how severe their impacts are. Established sources each have limits. In flooding, for example, field surveys are slow and labor-intensive, stream gauges are sparse, hydrodynamic models demand extensive input data and computing power, and satellite observations are constrained by revisit times and cloud cover.</p>
+                <p>Photos, videos, and posts shared by residents offer ground-level evidence during an event, but most of this content is unstructured and rarely geotagged. My research asks how large multimodal models and other GeoAI methods can turn such evidence into reliable, map-ready information, and how that information can be combined with established geospatial data to support decisions. Flooding is my first application, and these questions extend to environmental and natural hazards more broadly.</p>
+                <h4 class="subhead">Research directions</h4>
+                <ul>
+                  <li><strong>Impact extraction:</strong> estimating hazard intensity, damage, and humanitarian needs from images, video, and text.</li>
+                  <li><strong>Geolocation:</strong> locating untagged content at street level using visual cues and the context of recent events.</li>
+                  <li><strong>Trustworthy fusion:</strong> combining these observations with elevation, satellite, and stream gauge data into near-real-time inundation and damage maps, using physical consistency checks and uncertainty to filter errors and misinformation.</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="study-panel" id="study-floodwater">
+        <div class="prose">
+          <h3 class="study-title">Floodwater depth from photographs</h3>
+          <p>Floodwater depth helps responders decide where to send rescue teams, which roads to close, and which areas remain accessible. Earlier deep learning approaches could estimate depth from photos, but they required annotated training data and worked only with the objects they were trained to recognize, such as stop signs, vehicles, or people. We asked whether a pre-trained large multimodal model could perform this task across different reference objects without task-specific training.</p>
+          <h4 class="subhead">Approach</h4>
+          <p>We gave a pre-trained large multimodal model, GPT-4 Vision, on-site flood photos containing reference objects such as people, vehicles, or street signs, along with structured instructions on the typical heights of those objects. The model identified the object and where the water reached on it, then returned a depth in meters and explained its reasoning.</p>
+          <h4 class="subhead">What we found</h4>
+          <ul>
+            <li><strong>Agreement with people:</strong> across 150 flood photos, the model's estimates correlated strongly with the average of five independent manual estimates (r = 0.89).</li>
+            <li><strong>Error:</strong> the mean absolute error was 25 cm and the root mean square error was 30 cm relative to the manual estimates. This mean absolute error falls within the 6&ndash;32 cm range reported by earlier deep learning studies, although those studies used different datasets.</li>
+            <li><strong>Flexibility:</strong> one approach worked across people, vehicles, and street signs without training a separate model for each.</li>
+            <li><strong>Speed and cost:</strong> each estimate took about 10 seconds, and processing all 150 photos cost approximately $1.</li>
+          </ul>
+        </div>
+        <figure class="paper-figure">
+          <img src="assets/img/hazards-floodwater-results.jpg" alt="Six scatter plots showing that model depth estimates rise with human estimates, with correlations from 0.85 to 0.88 for individual raters and 0.89 for their average">
+          <figcaption>Model estimates compared with the average of five human raters and with each rater individually (depths in meters; r is Pearson's correlation). Figure 3 from Akinboyewa et al. (2024), licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</figcaption>
+        </figure>
+        <div class="prose">
+          <h4 class="subhead">Limits and next steps</h4>
+          <p>The estimates were compared with manual interpretations rather than field-measured depths. Results also varied between repeated runs, reference-object heights differ across regions, and depth can change within a scene depending on where it is observed. Turning these estimates into maps also requires knowing where each photo was taken, which motivates the geolocation and fusion directions above.</p>
+          <p class="citation">Akinboyewa, T., Ning, H., Lessani, M. N., &amp; Li, Z. (2024). Automated floodwater depth estimation using large multimodal model for rapid flood mapping. <em>Computational Urban Science</em>, 4(1), 12. <a href="https://doi.org/10.1007/s43762-024-00123-3">Read the paper &rarr;</a></p>
+        </div>
+            </article>
+
+            <article class="study-panel" id="related-work">
+              <h3 class="study-title">Related work</h3>
+              <ul class="entries">
+          <li><span class="entry-title">Multimodal Geospatial Data Fusion for Flood Depth Prediction Across the Contiguous United States</span>
+            <div class="entry-meta">NSF I-GUIDE Summer School team project, Boulder, CO, 2025. Ghaneei, P., Berg, A., Balogun, R. O., Liu, J., <strong>Akinboyewa, T.</strong>, Chen, X., Zhou, W.</div>
+            <div class="entry-links"><a href="https://platform.i-guide.io/oers/4aaf4262-4193-4b66-a88a-f6d8ae782dae">Materials &rarr;</a></div></li>
+        </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <strong>Temitope Akinboyewa</strong>
+          Department of Geography<br>
+          The Pennsylvania State University, University Park, PA<br>
+          <a href="mailto:tea5209@psu.edu">tea5209@psu.edu</a>
+        </div>
+        <div class="footer-links">
+          <a href="https://scholar.google.com/citations?user=yQsUY8MAAAAJ&hl=en">Google Scholar</a>
+          <a href="https://www.researchgate.net/profile/Temitope-Akinboyewa">ResearchGate</a>
+          <a href="https://github.com/Teakinboyewa">GitHub</a>
+          <a href="files/Akinboyewa_CV.pdf">CV</a>
+        </div>
+      </div>
+      <div class="copyright">&copy; 2026 Temitope Akinboyewa</div>
+    </div>
+  </footer>
+  <script>
+    (function () {
+      var links = document.querySelectorAll('.study-list a');
+      var panels = document.querySelectorAll('.study-panel');
+      function show(id) {
+        panels.forEach(function (p) { p.hidden = p.id !== id; });
+        links.forEach(function (a) {
+          if (a.getAttribute('href') === '#' + id) { a.setAttribute('aria-current', 'true'); }
+          else { a.removeAttribute('aria-current'); }
+        });
+      }
+      links.forEach(function (a) {
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          var id = a.getAttribute('href').slice(1);
+          show(id);
+          var top = document.querySelector('.study-layout').getBoundingClientRect().top;
+          if (top < 0) { window.scrollBy(0, top - 100); }
+          history.replaceState(null, '', '#' + id);
+        });
+      });
+      var wanted = location.hash.slice(1);
+      show(document.getElementById(wanted) && document.getElementById(wanted).classList.contains('study-panel') ? wanted : panels[0].id);
+    })();
+  </script>
+</body>
+</html>
